@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Form Hub</title>
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <style>
+        /* Performance optimization: Use will-change for animated elements */
+        .form-card, .form-card-header, .btn {
+            will-change: transform, box-shadow, opacity;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+        
+        /* Page load animation */
+        .content-wrapper {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Add smooth transitions for interactive elements */
+        a, button, .btn {
+            transition: all 0.2s ease-in-out;
+        }
+        
+        :root {
+            /* LeadsPedia Blue Theme */
+            --primary: #1a56a6;  /* Main LeadsPedia blue */
+            --primary-hover: #144a8c;  /* Slightly darker blue for hover states */
+            --primary-light: #e8f0fa;  /* Light blue for backgrounds */
+            --primary-transparent: rgba(26, 86, 166, 0.1);  /* Transparent blue for subtle effects */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --gray-100: #f8fafc;
+            --gray-200: #f1f5f9;
+            --gray-300: #e2e8f0;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background: #0a0e17;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Solar System Background */
+        .forms-grid {
+            display: flex;
+            gap: 2rem;
+            padding: 0.5rem 1rem 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 1rem;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 auto;
+            max-width: 1400px;
+            position: relative;
+        }
+        
+        .solar-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin: -50px 0 0 -50px;
+            background: radial-gradient(circle, #ffde82 0%, #ff8c00 70%, #ff4500 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff8c00, 0 0 150px #ff4500;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform-origin: 0 0;
+        }
+        
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            transform-origin: 50% 50%;
+        }
+        
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: #0a0e17;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff8c00, 0 0 150px #ff4500; }
+            100% { transform: scale(1.05); box-shadow: 0 0 60px #ff8c00, 0 0 120px #ff8c00, 0 0 180px #ff4500; }
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #1a56a6;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(26, 86, 166, 0.7),
+                        0 0 20px rgba(26, 86, 166, 0.5),
+                        0 0 30px rgba(26, 86, 166, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+            letter-spacing: 1px;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(26, 86, 166, 0.7),
+                            0 0 20px rgba(26, 86, 166, 0.5),
+                            0 0 30px rgba(26, 86, 166, 0.3);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(26, 86, 166, 0.9),
+                            0 0 30px rgba(26, 86, 166, 0.6),
+                            0 0 45px rgba(26, 86, 166, 0.4);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 0;
+        }
+        
+        /* Modern animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .forms-grid {
+            position: relative;
+            width: 100%;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+        
+        .forms-grid-wrapper {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .forms-grid-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .form-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 1rem 0;
+        }
+        
+        .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 1200px) {
+            .form-card {
+                min-width: 220px;
+                padding: 1.75rem 1.25rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .forms-grid {
+                padding: 1rem 0;
+            }
+            
+            .form-card {
+                min-width: 100%;
+                max-width: 100%;
+                margin: 0.5rem 0;
+            }
+            
+            .form-card {
+                width: 280px;
+                min-width: 280px;
+                height: 380px;
+            }
+        }
+        
+        /* Hide scrollbar for cleaner look but keep functionality */
+        .forms-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .forms-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        
+        .forms-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+        
+        .forms-grid::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .form-card {
+            background: rgba(26, 86, 166, 0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(26, 86, 166, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px) saturate(1.5);
+            -webkit-backdrop-filter: blur(12px) saturate(1.5);
+            border: 1px solid rgba(66, 153, 225, 0.3);
+            width: 300px;
+            min-width: 300px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            scroll-snap-align: start;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(43, 108, 176, 0.2), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .form-card:hover::before {
+            opacity: 0.8;
+        }
+        
+        .form-card:nth-child(2) { animation-delay: 0.5s; }
+        .form-card:nth-child(3) { animation-delay: 1s; }
+        .form-card:nth-child(4) { animation-delay: 1.5s; }
+        
+        .form-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 50px rgba(26, 86, 166, 0.3);
+            backdrop-filter: blur(15px) saturate(1.8);
+            -webkit-backdrop-filter: blur(15px) saturate(1.8);
+            background: rgba(26, 86, 166, 0.25);
+            border-color: rgba(66, 153, 225, 0.5);
+            z-index: 2;
+        }
+        
+        .form-card:hover .form-card-header {
+            background: linear-gradient(135deg, rgba(26, 86, 166, 0.9), rgba(30, 66, 159, 0.9));
+        }
+        
+        /* Remove background for education form card header */
+        /* Education card specific styles */
+        .education-card .education-header,
+        .education-card:hover .education-header {
+            background: transparent !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        
+        .education-card .education-header::before,
+        .education-card .education-header::after {
+            display: none !important;
+        }
+        
+        /* Style for education card button */
+        .education-card .btn {
+            background: transparent !important;
+            border: 2px solid white !important;
+            color: white !important;
+            box-shadow: none !important;
+        }
+        
+        .education-card .btn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Make all form cards transparent */
+        .form-card {
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+            transform: none !important;
+        }
+        
+        .form-card::before,
+        .form-card::after {
+            display: none !important;
+        }
+        
+        /* Style for all form card bodies */
+        .form-card-body {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 1rem 0 0 0 !important;
+        }
+        
+        /* Style for all form card headers */
+        .form-card-header {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            padding: 0 0 1rem 0 !important;
+        }
+        
+        .form-card-header::before,
+        .form-card-header::after {
+            display: none !important;
+        }
+        
+        /* Style for all buttons */
+        .btn {
+            background: transparent !important;
+            border: 2px solid white !important;
+            color: white !important;
+            box-shadow: none !important;
+            margin-top: 0.5rem;
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Remove hover effects */
+        .form-card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+        }
+        
+        .form-card:hover .form-card-header {
+            background: transparent !important;
+        }
+        
+        .form-card:hover .form-card-body {
+            background: transparent !important;
+        }
+        
+        .form-card-header {
+            background: linear-gradient(135deg, rgba(26, 86, 166, 0.8), rgba(30, 66, 159, 0.8));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            border-bottom: 1px solid rgba(66, 153, 225, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .form-card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.2));
+            z-index: 1;
+        }
+        
+        .form-card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .form-card:hover .form-card-header::after {
+            transform: scaleX(1);
+        }
+        
+        .form-card-header i {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+            display: block;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
+            transform: translateY(0);
+            color: #fff;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        .form-card:hover .form-card-header i {
+            transform: translateY(-5px) rotateY(20deg);
+        }
+        
+        .form-card:hover .form-card-header i {
+            transform: scale(1.1);
+        }
+        
+        .form-card-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+        
+        .form-card-body {
+            padding: 2rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 30, 60, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+        
+        .form-card:hover .form-card-body {
+            background: rgba(15, 30, 60, 0.25);
+        }
+        
+        /* Demo Request Button */
+        .demo-request-container {
+            text-align: center;
+            margin: 0.5rem auto 0.5rem;
+            max-width: 800px;
+            padding: 0 1.5rem;
+            position: relative;
+            top: -10px;
+        }
+        
+        .demo-request-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.4rem;
+            border: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem auto;
+            cursor: pointer;
+            white-space: nowrap;
+            gap: 8px;
+        }
+        
+        .demo-request-button:hover {
+            color: #a0c4ff;
+        }
+        
+        .demo-request-button:hover i:last-child {
+            transform: translateX(3px);
+            opacity: 1;
+        }
+        
+        .demo-request-button i:first-child {
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-request-button i:last-child {
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .demo-request-button:hover i:last-child {
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+           .demo-request-button {
+                font-size: 1.3rem;
+            }
+        }
+        
+        .form-card-body p {
+            color: #e0e0ff;
+            margin: 0 0 2rem 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            flex-grow: 1;
+            padding: 0 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-size: 200% 200%;
+            color: white;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4), 
+                        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #8b5cf6, #4c1d95);
+            background-size: 200% 200%;
+            opacity: 0;
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6), 
+                        0 0 15px rgba(199, 210, 254, 0.3);
+            background-position: 100% 100%;
+            border-color: rgba(199, 210, 254, 0.5);
+        }
+        
+        .btn:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3), 
+                       inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn i {
+            margin-left: 0.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover i {
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+            .forms-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                padding: 0 1rem;
+                gap: 1.5rem;
+                perspective: none;
+            }
+            
+            .form-card {
+                animation: none;
+                transform: none !important;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+                border: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            
+            .form-card:hover {
+                transform: translateY(-4px) scale(1.01) !important;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            }
+            
+            .form-card-header {
+                animation: none;
+                background: linear-gradient(45deg, #6e45e2, #89d4cf);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .form-card:nth-child(1) { animation-delay: 0.1s; }
+        .form-card:nth-child(2) { animation-delay: 0.15s; }
+        .form-card:nth-child(3) { animation-delay: 0.2s; }
+        .form-card:nth-child(4) { animation-delay: 0.25s; }
+        .form-card:nth-child(5) { animation-delay: 0.3s; }
+        .form-card:nth-child(6) { animation-delay: 0.35s; }
+        
+        /* Title Styling */
+        .page-title {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #fff, #a5b4fc, #f0abfc, #a5f3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            margin: 0 0 1rem 0;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(165, 180, 252, 0.3);
+            animation: titleGlow 8s ease-in-out infinite alternate;
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #a5b4fc, #f0abfc);
+            border-radius: 2px;
+            animation: linePulse 4s ease-in-out infinite;
+        }
+        
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        
+        @keyframes titleGlow {
+            0% {
+                background-position: 0% 50%;
+                text-shadow: 0 0 20px rgba(165, 180, 252, 0.3);
+            }
+            50% {
+                background-position: 100% 50%;
+                text-shadow: 0 0 30px rgba(240, 171, 252, 0.5);
+            }
+            100% {
+                background-position: 0% 50%;
+                text-shadow: 0 0 20px rgba(165, 243, 252, 0.3);
+            }
+        }
+        
+        @keyframes linePulse {
+            0%, 100% {
+                transform: translateX(-50%) scaleX(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-50%) scaleX(1.5);
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+
+    
+    <div class="container">
+        <!-- Solar System Background -->
+        <div class="stars" id="stars"></div>
+        <div class="solar-system" id="solarSystem">
+            <div class="sun"></div>
+            <!-- Planets will be added by JavaScript -->
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 2; text-align: center; max-width: 100%; padding: 3rem 1rem 0.5rem;">
+            <h1 class="page-title" style="margin-bottom: 0.75rem;">Demo Form Hub</h1>
+            <p class="page-subtitle" style="margin-bottom: 0.5rem;">Select a form to get started</p>
+        </div>
+        
+        <div class="forms-grid">
+            <div class="forms-grid-wrapper" id="circularGrid">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <i class="fas fa-car"></i>
+                        <h2>Auto Insurance</h2>
+                    </div>
+                    <div class="form-card-body">
+                        <a href="Auto Insurance Form/auto_insurance_form.html" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <i class="fas fa-home"></i>
+                        <h2>Home Services</h2>
+                    </div>
+                    <div class="form-card-body">
+                        <a href="home_services_lead_form.html" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h2>Debt</h2>
+                    </div>
+                    <div class="form-card-body">
+                        <a href="loan_application_modern_enhanced.html" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="form-card fade-in">
+                    <div class="form-card-header">
+                        <i class="fas fa-heartbeat"></i>
+                        <h2>Health Insurance</h2>
+                    </div>
+                    <div class="form-card-body">
+                        <a href="health_insurance_form.html" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <i class="fas fa-solar-panel"></i>
+                        <h2>Solar</h2>
+                    </div>
+                    <div class="form-card-body">
+                        <a href="solar_lead_form.html" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="form-card education-card">
+                    <div class="form-card-header education-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h2>Education</h2>
+                    </div>
+                    <div class="form-card-body">
+                        <a href="education_form.html" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Demo Request Card removed - Moved to bottom bar -->
+            </div>
+        </div>
+
+        </div>
+    
+    <!-- Demo Request Button -->
+    <div class="demo-request-container">
+            <a href="demo_intake_form.html" class="demo-request-button">
+                <i class="fas fa-rocket"></i>
+                <span>Request a Demo</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+    </div>
+    
+    <footer style="margin-top: 1rem; padding: 0.5rem 0 1rem; text-align: center;">
+        <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; margin: 0 0 0.5rem 0;">&copy; 2025 Breakfast Club Publishing. All rights reserved.</p>
+        <div style="opacity: 0.7;">
+            <p style="font-size: 0.8rem; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7);">Powered by</p>
+            <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 45px; width: auto; margin-top: 0.5rem;">
+        </div>
+    </footer>
+        <script>
+            // Initialize animations
+            document.addEventListener('DOMContentLoaded', function() {
+                // Start the background animations after a short delay
+                setTimeout(initAnimations, 100);
+                
+                // Preload the health insurance form in the background
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('/sw.js')
+                            .then(registration => console.log('ServiceWorker registered'))
+                            .catch(err => console.log('ServiceWorker registration failed: ', err));
+                    });
+                }
+                
+                // Preload the health insurance form page
+                const preloadLink = document.createElement('link');
+                preloadLink.href = 'health_insurance_form.html';
+                preloadLink.rel = 'prefetch';
+                document.head.appendChild(preloadLink);
+            });
+            
+            function initAnimations() {
+                // Create stars
+                const stars = document.getElementById('stars');
+                const starFragment = document.createDocumentFragment();
+                
+                // Reduce number of stars for better performance
+                for (let i = 0; i < 100; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.cssText = `
+                        width: ${Math.random() * 3}px;
+                        height: ${Math.random() * 3}px;
+                        left: ${Math.random() * 100}vw;
+                        top: ${Math.random() * 100}vh;
+                        animation-delay: ${Math.random() * 2}s;
+                        animation-duration: ${Math.random() * 3 + 2}s;
+                    `;
+                    starFragment.appendChild(star);
+                }
+                stars.appendChild(starFragment);
+                
+                // Create planets and orbits
+                const solarSystem = document.getElementById('solarSystem');
+                const planets = [
+                    { size: 10, color: '#a0522d', orbit: 150, speed: 20, offset: 0 },
+                    { size: 20, color: '#87ceeb', orbit: 250, speed: 40, offset: 30 },
+                    { size: 16, color: '#daa520', orbit: 400, speed: 60, offset: 15 },
+                    { size: 14, color: '#cd5c5c', orbit: 550, speed: 80, offset: 45 }
+                ];
+                
+                // Use requestAnimationFrame for smoother animations
+                requestAnimationFrame(() => {
+                    planets.forEach((planet, index) => {
+                        // Create orbit
+                        const orbit = document.createElement('div');
+                        orbit.className = 'orbit';
+                        orbit.style.cssText = `
+                            width: ${planet.orbit * 2}px;
+                            height: ${planet.orbit * 2}px;
+                            margin-left: -${planet.orbit}px;
+                            margin-top: -${planet.orbit}px;
+                            animation: orbit ${planet.speed}s linear infinite;
+                            animation-delay: -${planet.offset}s;
+                        `;
+                        
+                        // Create planet
+                        const planetEl = document.createElement('div');
+                        planetEl.className = 'planet';
+                        planetEl.style.cssText = `
+                            width: ${planet.size}px;
+                            height: ${planet.size}px;
+                            background: radial-gradient(circle at 30% 30%, #fff, ${planet.color} 70%);
+                            top: 50%;
+                            left: ${planet.orbit}px;
+                            margin-top: -${planet.size/2}px;
+                            margin-left: -${planet.size/2}px;
+                            box-shadow: 0 0 10px ${planet.color};
+                        `;
+                        
+                        orbit.appendChild(planetEl);
+                        solarSystem.appendChild(orbit);
+                    });
+                });
+            }
+            
+            // Add a simple service worker for caching
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then(registration => {
+                            console.log('ServiceWorker registration successful');
+                        })
+                        .catch(err => {
+                            console.log('ServiceWorker registration failed: ', err);
+                        });
+                });
+            }
+        </script>
+    </div>
+    
+    <style>
+        /* Help Button Styles */
+        .help-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #1a56a6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            animation: pulse 2s infinite;
+        }
+        
+        .help-button:hover {
+            background: #144a8c;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(26, 86, 166, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(26, 86, 166, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(26, 86, 166, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .help-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+    </style>
+    
+    <!-- Help Button -->
+    <a href="leads_pedia_info.html" class="help-button" aria-label="Learn more about LeadsPedia" title="Learn more about LeadsPedia">
+        <i class="fas fa-question"></i>
+    </a>
+    
+    <script>
+        // Add loaded class to body when page is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('page-loaded');
+            
+            // Add smooth scroll to top when clicking the help button on mobile
+            const helpButton = document.querySelector('.help-button');
+            if (window.innerWidth <= 768) {
+                helpButton.addEventListener('click', function(e) {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+    </body>
+</html>
