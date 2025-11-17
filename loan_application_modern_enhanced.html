@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application | Demo Form Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/space-theme.css">
+    <style>
+        /* Custom styles for loan form */
+        .loan-amount-container {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            grid-column: 1 / -1;
+        }
+        
+        .loan-amount-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--space-white);
+            text-align: center;
+            margin: 0.75rem 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .loan-amount-slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 4px;
+            outline: none;
+            margin: 1.5rem 0;
+        }
+        
+        .loan-amount-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--space-purple);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 0 2px var(--space-dark), 0 0 0 4px var(--space-purple);
+            transition: var(--transition);
+        }
+        
+        .loan-amount-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            background: var(--space-blue);
+        }
+        
+        .loan-amount-range {
+            display: flex;
+            justify-content: space-between;
+            color: var(--space-light);
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        .form-note {
+            font-size: 0.8125rem;
+            color: var(--space-light);
+            opacity: 0.7;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .tcpa-consent {
+            font-size: 0.75rem;
+            color: var(--space-light);
+            opacity: 0.7;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .tcpa-consent input[type="checkbox"] {
+            margin-right: 0.5rem;
+            position: relative;
+            top: 2px;
+        }
+        
+        .tcpa-consent a {
+            color: var(--space-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .tcpa-consent a:hover {
+            color: var(--space-pink);
+            text-decoration: underline;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            margin: 1.5rem 0 0;
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+            background: rgba(15, 23, 42, 0.4);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: var(--transition);
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(5px);
+            border-color: var(--space-purple);
+        }
+        
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: var(--space-purple);
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+            min-width: 24px;
+        }
+        
+        .benefit-content h3 {
+            color: var(--space-white);
+            margin-bottom: 0.25rem;
+            font-size: 1.05rem;
+        }
+        
+        .benefit-content p {
+            color: var(--space-light);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 1.125rem 1.5rem;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1.0625rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px -3px rgba(79, 70, 229, 0.4);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+        
+        /* Ad Section */
+        .ad-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .ad-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ad-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .testimonial img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .benefit-item i {
+            color: var(--success);
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+            
+            .form-section {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .ad-section {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1>Get Your Loan Today</h1>
+                <p>
+                    <i class="fas fa-check-circle"></i>
+                    Quick and easy application process
+                </p>
+            </div>
+            
+            <form id="loanForm" action="https://learn.leadspediatrack.com/post.do" method="POST" class="loan-form">
+                <!-- Required Hidden Fields -->
+                <input type="hidden" name="lp_campaign_id" value="19">
+                <input type="hidden" name="lp_campaign_key" value="TqfN47HPMwKn8JtkF92Q">
+                <input type="hidden" name="lp_response" value="json">
+                <input type="hidden" name="lp_test" value="0">
+                <input type="hidden" name="ip_address" id="ip_address">
+                <input type="hidden" name="sub_id" id="sub_id">
+                
+                <!-- Optional Hidden Fields -->
+                <input type="hidden" name="source" value="web_form">
+                <input type="hidden" name="lead_type" value="personal_loan">
+                
+                <!-- Loan Amount -->
+                <div class="loan-amount-container">
+                    <label class="form-label">How much do you need? *</label>
+                    <div class="loan-amount-display" id="amountDisplay">$5,000</div>
+                    <input type="range" id="loan_amount" name="loan_amount" min="500" max="35000" step="100" value="5000" class="loan-amount-slider">
+                    <div class="loan-amount-range">
+                        <span>$500</span>
+                        <span>$35,000+</span>
+                    </div>
+                </div>
+                
+                <!-- Personal Information -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email_address" class="form-label">Email Address *</label>
+                    <input type="email" id="email_address" name="email_address" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" id="phone_home" name="phone_home" class="form-control" placeholder="Phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" id="address" name="address" class="form-control" placeholder="Street Address" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" id="address2" name="address2" class="form-control" placeholder="Apt/Suite (optional)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="date_of_birth" class="form-label">Date of Birth *</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ssn" class="form-label">Last 4 Digits of SSN *</label>
+                    <input type="text" id="ssn" name="ssn" class="form-control" pattern="\d{4}" maxlength="4" placeholder="Last 4 digits" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="employment_status" class="form-label">Employment Status *</label>
+                    <select id="employment_status" name="employment_status" class="form-control" required>
+                        <option value="">Select Employment Status</option>
+                        <option value="employed">Employed</option>
+                        <option value="self_employed">Self-Employed</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="retired">Retired</option>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="monthly_income" class="form-label">Monthly Income ($) *</label>
+                    <input type="number" id="monthly_income" name="monthly_income" class="form-control" min="0" step="100" required>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 0.7fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <input type="text" id="city" name="city" class="form-control" placeholder="City" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="state" name="state" class="form-control" required>
+                            <option value="">State</option>
+                            <option value="AL">AL</option>
+                            <option value="AK">AK</option>
+                            <!-- Add other states -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip_code" class="form-label">ZIP Code *</label>
+                        <input type="text" id="zip_code" name="zip_code" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <button type="submit" class="btn">
+                        <i class="fas fa-arrow-right" style="margin-right: 8px;"></i>
+                        Get Your Loan Now
+                        <i class="fas fa-bolt" style="margin-left: 8px;"></i>
+                    </button>
+                </div>
+                
+                <div class="tcpa-consent">
+                    <input type="checkbox" id="tcpa_consent" name="tcpa_consent" required>
+                    <label for="tcpa_consent">
+                        By checking this box, I consent to receive calls, text messages, and/or emails from our partners and us at the number and email address provided, including my wireless number if provided, regarding products or services. Message and data rates may apply. I understand that these calls may be generated using an automated technology. I understand that I am not required to provide this consent to make a purchase.
+                    </label>
+                </div>
+                <p class="form-note" style="margin-top: 1rem; text-align: center;">
+                    By submitting this form, you agree to our <a href="#" class="tcpa-consent">Terms of Use</a> and <a href="#" class="tcpa-consent">Privacy Policy</a>.
+                </p>
+            </form>
+        
+        <!-- Success Message (hidden, only used for the alert) -->
+        <div id="successMessage" style="display: none;"></div>
+    </div>
+    
+    <script>
+        // Initialize stars background
+        const stars = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 2 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            stars.appendChild(star);
+        }
+        // Update loan amount display
+        const loanAmountSlider = document.getElementById('loan_amount');
+        const amountDisplay = document.getElementById('amountDisplay');
+        
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        // Set initial values
+        document.addEventListener('DOMContentLoaded', function() {
+            // Format loan amount
+            amountDisplay.textContent = formatNumber(loanAmountSlider.value);
+            
+            // Get IP address (simplified example - in production, use a proper IP service)
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip_address').value = data.ip;
+                })
+                .catch(() => {
+                    document.getElementById('ip_address').value = '';
+                });
+            
+            // Get sub_id from URL if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const subId = urlParams.get('subid') || urlParams.get('sub_id') || '';
+            document.getElementById('sub_id').value = subId;
+        });
+        
+        loanAmountSlider.addEventListener('input', function() {
+            amountDisplay.textContent = formatNumber(this.value);
+        });
+        
+        // Form submission handler
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
+            const form = this;
+            const submitBtn = form.querySelector('.btn');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            const formBody = new URLSearchParams(formData).toString();
+            
+            // Log the data being sent (for debugging)
+            console.log('Submitting form data:', Object.fromEntries(formData.entries()));
+            
+            // Submit to LeadsPedia and handle response
+            fetch('https://learn.leadspediatrack.com/post.do', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formBody
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log('LeadsPedia response:', responseText);
+                
+                let result, message;
+                
+                try {
+                    // Try to parse as JSON first
+                    const jsonResponse = JSON.parse(responseText);
+                    result = jsonResponse.result;
+                    message = jsonResponse.msg;
+                } catch (e) {
+                    // If JSON parsing fails, try XML
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(responseText, 'text/xml');
+                    result = xmlDoc.querySelector('result')?.textContent;
+                    message = xmlDoc.querySelector('msg')?.textContent;
+                }
+                
+                if (result === 'success') {
+                    // Show simple thank you alert
+                    alert('Thank you for submitting your lead to LeadsPedia!');
+                    form.reset();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // Handle error
+                    console.error('Lead submission failed:', message);
+                    alert('There was an error submitting your application. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Get Your Loan Now<i class="fas fa-bolt" style="margin-left: 8px;"></i>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-arrow-right" style="margin-right: 8px;"></i>Get Your Loan Now<i class="fas fa-bolt" style="margin-left: 8px;"></i>';
+            });
+        });
+    </script>
+    
+    <footer style="text-align: center; padding: 0.5rem 0 1rem; color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 1rem;">
+        <p style="margin-bottom: 0.5rem;">2025 Breakfast Club Publishing. All rights reserved.</p>
+        <div style="opacity: 0.7;">
+            <p style="font-size: 0.8rem; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7);">Powered by</p>
+            <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 45px; width: auto; margin-top: 0.5rem;">
+        </div>
+    </footer>
+</body>
+</html>

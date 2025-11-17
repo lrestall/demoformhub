@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Health Insurance | Demo Form Hub</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Health Insurance | Demo Form Hub</title>
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="css/space-theme.css">
+    <style>
+        /* Space Theme Variables */
+        :root {
+            --space-blue: #3b82f6;
+            --space-indigo: #6366f1;
+            --space-purple: #8b5cf6;
+            --space-yellow: #f59e0b;
+            --space-green: #10b981;
+            --space-white: #f8fafc;
+            --space-gray: #1e293b;
+            --space-dark: #0f172a;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Space Background */
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: var(--space-white, #fff);
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+            will-change: opacity;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--space-white);
+            background: linear-gradient(135deg, var(--space-dark), var(--space-gray));
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Critical CSS - Load first */
+        :root {
+            --space-blue: #3b82f6;
+            --space-indigo: #6366f1;
+            --space-purple: #8b5cf6;
+            --space-yellow: #f59e0b;
+            --space-green: #10b981;
+            --space-white: #f8fafc;
+            --space-gray: #1e293b;
+            --space-dark: #0f172a;
+            --space-light: #f8fafc;
+        }
+        
+        /* Above-the-fold styles */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--space-white);
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .form-header {
+            background: linear-gradient(90deg, var(--space-purple), var(--space-indigo));
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-header h2 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .form-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-body {
+            padding: 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--space-white);
+            font-size: 0.95rem;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--space-white);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        input:focus,
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--space-blue);
+            outline: none;
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f8fafc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--space-teal), var(--space-blue));
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--space-blue), var(--space-teal));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        /* Form Checkbox */
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        
+        .form-checkbox input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.75rem;
+        }
+        
+        /* Textarea */
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* Disclaimer Text */
+        .disclaimer {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .sidebar h3 {
+            color: var(--space-white);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .sidebar h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--space-teal), var(--space-blue));
+            border-radius: 3px;
+        }
+        
+        .benefits {
+            margin-bottom: 2rem;
+        }
+        
+        .benefit {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit i {
+            color: var(--space-teal);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        
+        .benefit h4 {
+            color: var(--space-white);
+            margin: 0 0 0.25rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .benefit p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .contact-info {
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+        }
+        
+        .contact-info h4 {
+            color: var(--space-teal);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info h4 i {
+            margin-right: 0.5rem;
+        }
+        
+        .contact-info p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .contact-info a {
+            color: var(--space-teal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Layout */
+        @media (min-width: 1024px) {
+            .container {
+                display: flex;
+                max-width: 1200px;
+            }
+            
+            form {
+                flex: 2;
+                border-right: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .sidebar {
+                flex: 1;
+                border-top: none;
+    </style>
+    <script>
+        // Function to scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Initial scroll to top
+        scrollToTop();
+        
+        // Scroll again after a short delay
+        setTimeout(scrollToTop, 100);
+        
+        // Also scroll on window load
+        window.addEventListener('load', function() {
+            scrollToTop();
+            setTimeout(scrollToTop, 200);
+            createSpaceBackground();
+        });
+        
+        // Create space background
+        function createSpaceBackground() {
+            const container = document.getElementById('stars-container');
+            if (!container) return;
+            
+            // Clear existing stars
+            container.innerHTML = '';
+            
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                container.appendChild(star);
+            }
+        }
+        
+        // Form submission
+        document.getElementById('healthInsuranceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // Submit the form
+            this.submit();
+        });
+        
+        // Initialize space background when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createSpaceBackground();
+            window.scrollTo(0, 0);
+        });
+    </script>
+</head>
+<body class="space-theme" style="min-height: 100vh; margin: 0; padding: 0; color: #f8fafc; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; overflow-x: hidden; position: relative;">
+    <!-- Space Background Container -->
+    <div id="stars-container"></div>
+    <!-- ... -->
+    <div class="form-page-container">
+        <div class="form-container">
+            <form id="healthInsuranceForm" action="https://learn.leadspediatrack.com/post.do" method="POST" class="main-form">
+                <!-- ... -->
+            </form>
+        </div>
+    </div>
+    <!-- ... -->
+    <script>
+        // ... 
+                // Create planet
+                const planetEl = document.createElement('div');
+                planetEl.className = 'planet';
+                planetEl.style.width = planet.size + 'px';
+                planetEl.style.height = planet.size + 'px';
+                planetEl.style.background = `radial-gradient(circle at 30% 30%, #fff, ${planet.color} 70%)`;
+                planetEl.style.top = '50%';
+                planetEl.style.left = planet.orbit + 'px';
+                planetEl.style.marginTop = -planet.size/2 + 'px';
+                planetEl.style.marginLeft = -planet.size/2 + 'px';
+                planetEl.style.boxShadow = `0 0 10px ${planet.color}`;
+                
+                orbit.appendChild(planetEl);
+                solarSystem.appendChild(orbit);
+            });
+        }
+    </script>
+</body>
+</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insurance | Demo Form Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/space-theme.css">
+    <style>
+        /* Space Theme Variables */
+        :root {
+            --space-blue: #3b82f6;
+            --space-indigo: #6366f1;
+            --space-purple: #8b5cf6;
+            --space-yellow: #f59e0b;
+            --space-green: #10b981;
+            --space-white: #f8fafc;
+            --space-gray: #1e293b;
+            --space-dark: #0f172a;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--space-white);
+            background: #0a0e17;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e17, #06090f);
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            from { opacity: 0.2; }
+            to { opacity: 1; }
+        }
+        
+        /* Form Container */
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            z-index: 1;
+            padding: 0 1.5rem;
+        }
+        
+        .form-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, rgba(26, 86, 166, 0.9), rgba(30, 66, 159, 0.9));
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(66, 153, 225, 0.3);
+        }
+        
+        .form-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+        
+        .form-header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .form-body {
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--space-white);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 0.5rem;
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--space-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--space-blue);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        .btn-submit {
+            display: inline-block;
+            background: var(--space-blue);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn-submit:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .form-note {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-note a {
+            color: var(--space-blue);
+            text-decoration: none;
+        }
+        
+        .form-note a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .success-message h2 {
+            color: var(--space-green);
+            margin: 1rem 0;
+            font-size: 1.8rem;
+        }
+        
+        .success-message p {
+            color: #e2e8f0;
+            margin: 1.5rem auto 2rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(90deg, var(--space-purple), var(--space-indigo));
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+            
+            .form-header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .form-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .form-body {
+                padding: 1.5rem 1rem;
+            }
+            
+            .btn-submit {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="space-theme">
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1><i class="fas fa-heartbeat"></i> Health Insurance</h1>
+                <p>Get your free health insurance quote today</p>
+            </div>
+            
+            <form id="healthInsuranceForm" action="https://learn.leadspediatrack.com/post.do" method="POST" class="form-body">
+                <!-- Hidden Fields for LeadsPedia -->
+                <input type="hidden" name="lp_campaign_id" value="686fc603bf1a5">
+                <input type="hidden" name="lp_campaign_key" value="jKNqfR3t6nzJgmdHPBk4">
+                <input type="hidden" name="lp_response" value="json">
+                <input type="hidden" name="ip_address" id="ip_address">
+                <input type="hidden" name="sub_id" id="sub_id">
+                
+                <div class="form-group">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" id="first_name" name="first_name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="zip_code" class="form-label">ZIP Code</label>
+                    <input type="text" id="zip_code" name="zip_code" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date_of_birth" class="form-label">Date of Birth *</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender" class="form-label">Gender *</label>
+                    <select id="gender" name="gender" class="form-control" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other/Prefer not to say</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="household_income" class="form-label">Annual Household Income *</label>
+                    <select id="household_income" name="household_income" class="form-control" required>
+                        <option value="">Select Income Range</option>
+                        <option value="under_25k">Under $25,000</option>
+                        <option value="25k_50k">$25,000 - $50,000</option>
+                        <option value="50k_75k">$50,001 - $75,000</option>
+                        <option value="75k_100k">$75,001 - $100,000</option>
+                        <option value="over_100k">Over $100,000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tobacco_use" class="form-label">Tobacco Use *</label>
+                    <select id="tobacco_use" name="tobacco_use" class="form-control" required>
+                        <option value="">Select One</option>
+                        <option value="no">No, I don't use tobacco</option>
+                        <option value="yes">Yes, I use tobacco</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preexisting_conditions" class="form-label">Pre-existing Conditions *</label>
+                    <select id="preexisting_conditions" name="preexisting_conditions" class="form-control" required>
+                        <option value="">Select One</option>
+                        <option value="none">None</option>
+                        <option value="diabetes">Diabetes</option>
+                        <option value="heart_disease">Heart Disease</option>
+                        <option value="cancer">Cancer</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="coverage_type" class="form-label">Type of Coverage</label>
+                    <select id="coverage_type" name="coverage_type" class="form-control" required>
+                        <option value="">Select coverage type</option>
+                        <option value="individual">Individual</option>
+                        <option value="family">Family</option>
+                        <option value="medicare">Medicare</option>
+                        <option value="medicaid">Medicaid</option>
+                        <option value="dental">Dental</option>
+                        <option value="vision">Vision</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-submit">Get My Free Quote <i class="fas fa-arrow-right"></i></button>
+                
+                <p class="form-note">By submitting this form, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            </form>
+            
+            <!-- Success Message (initially hidden) -->
+            <div id="successMessage" class="success-message">
+                <div style="margin-bottom: 2rem;">
+                    <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 60px; width: auto; margin-bottom: 1rem;">
+                </div>
+                <h2>Thank you for your submission!</h2>
+                <p>A health insurance specialist will contact you shortly to discuss your options.</p>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer style="text-align: center; padding: 1.5rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+        <p>2025 Breakfast Club Publishing. All rights reserved.</p>
+        <div style="margin-top: 0.5rem;">
+            <p style="font-size: 0.8rem; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7);">Powered by</p>
+            <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 45px; width: auto; margin-top: 0.5rem;">
+        </div>
+    </footer>
+    
+    <script>
+        // Create stars for background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size between 1 and 3 pixels
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Get IP address
+        async function getIPAddress() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                document.getElementById('ip_address').value = data.ip;
+            } catch (error) {
+                console.error('Error fetching IP address:', error);
+            }
+        }
+        
+        // Form submission
+        document.getElementById('healthInsuranceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Submitting...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            const formBody = new URLSearchParams(formData).toString();
+            
+            // Submit to LeadsPedia and handle response
+            fetch('https://learn.leadspediatrack.com/post.do', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formBody
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log('LeadsPedia response:', responseText);
+                
+                // Show success message
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your information. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Get My Free Quote <i class="fas fa-arrow-right"></i>';
+            });
+        });
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create stars background
+            createStars();
+            
+            // Get IP address
+            getIPAddress();
+            
+            // Get sub_id from URL if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const subId = urlParams.get('subid') || urlParams.get('sub_id') || '';
+            document.getElementById('sub_id').value = subId;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>

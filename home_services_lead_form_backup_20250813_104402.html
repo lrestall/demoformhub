@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Services | Demo Form Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/space-theme.css">
+    <style>
+        /* Custom styles for home services form */
+        .service-type-container {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .form-note {
+            font-size: 0.8125rem;
+            color: var(--space-light);
+            opacity: 0.7;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .tcpa-consent {
+            font-size: 0.75rem;
+            color: var(--space-light);
+            opacity: 0.7;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .tcpa-consent input[type="checkbox"] {
+            margin-right: 0.5rem;
+            position: relative;
+            top: 2px;
+        }
+        
+        .tcpa-consent a {
+            color: var(--space-green);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .tcpa-consent a:hover {
+            color: var(--space-teal);
+            text-decoration: underline;
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .service-option {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .service-option i {
+            font-size: 1.5rem;
+            color: var(--space-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-option:hover {
+            border-color: var(--space-green);
+            transform: translateY(-2px);
+        }
+        
+        .service-option.selected {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--space-green);
+            box-shadow: 0 0 0 2px var(--space-green);
+        }
+        
+        .service-option span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--space-light);
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            background: rgba(15, 23, 42, 0.4);
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: var(--transition);
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(5px);
+            border-color: var(--space-green);
+        }
+        
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: var(--space-green);
+            margin-right: 1rem;
+            min-width: 24px;
+            margin-top: 0.25rem;
+        }
+        
+        .benefit-content h3 {
+            color: var(--space-white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .benefit-content p {
+            color: var(--space-light);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1.5rem 1rem;
+            }
+            
+            .service-options {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 0.9rem;
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        
+        .service-option {
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            padding: 1.25rem 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+        
+        .service-option:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary-light);
+        }
+        
+        .service-option i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        
+        .service-option.selected {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .benefits {
+            margin-top: 2.5rem;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+        
+        .benefit:hover {
+            background: var(--gray-50);
+        }
+        
+        .benefit i {
+            color: var(--primary);
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        
+        .testimonial {
+            background: var(--gray-50);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            position: relative;
+            border: 1px solid var(--gray-100);
+        }
+        
+        .testimonial:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-light);
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            line-height: 1;
+            opacity: 0.2;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        @media (max-width: 480px) {
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-body, .sidebar {
+                padding: 1.75rem 1.25rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-col {
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-col:last-child {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-options {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .form-body {
+                padding: 2rem 1.5rem;
+            }
+            
+            .sidebar {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-top: 1rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-col {
+                margin-bottom: 1rem;
+            }
+            
+            .form-col:last-child {
+                margin-bottom: 0;
+            }
+            
+            .service-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1>Schedule Your Home Service</h1>
+                <p>
+                    <i class="fas fa-check-circle"></i>
+                <div class="form-header">
+                    <h1>Schedule Your Home Service</h1>
+                    <p>
+                        <i class="fas fa-check-circle"></i>
+                    </p>
+                </div>
+                
+                <form id="homeServicesForm" action="https://leads.leadspediatrack.com/post.do" method="POST" class="service-form">
+                    <!-- Required Hidden Fields for LeadsPedia -->
+                    <input type="hidden" name="campaign_id" value="7">
+                    <input type="hidden" name="lp_campaign_id" value="7">
+                    <input type="hidden" name="lp_response" value="json">
+                    <input type="hidden" name="lp_test" value="0">
+                    <input type="hidden" name="ip_address" id="ip_address">
+                    <input type="hidden" name="user_agent" id="user_agent">
+                    <input type="hidden" name="source_url" id="source_url">
+                    <input type="hidden" name="referrer" id="referrer">
+                    <input type="hidden" name="lead_type" value="home_services">
+                    <input type="hidden" name="services_needed" id="services_needed" value="">
+                    <input type="hidden" name="lp_campaign_key" value="">
+                    <input type="hidden" name="lp_s1" value="">
+                    <input type="hidden" name="lp_s2" value="">
+                    <input type="hidden" name="lp_s3" value="">
+                    <input type="hidden" name="lp_s4" value="">
+                    <input type="hidden" name="lp_s5" value="">
+                
+                    <div class="service-type-container">
+                        <h2 class="form-label">What type of service do you need? *</h2>
+                        <div class="service-options" id="serviceOptions">
+                            <div class="service-option" data-service="plumbing">
+                                <i class="fas fa-faucet"></i>
+                                <span>Plumbing</span>
+                            </div>
+                            <div class="service-option" data-service="electrical">
+                                <i class="fas fa-bolt"></i>
+                                <span>Electrical</span>
+                            </div>
+                            <div class="service-option" data-service="hvac">
+                                <i class="fas fa-thermometer-half"></i>
+                                <span>HVAC</span>
+                            </div>
+                            <div class="service-option" data-service="cleaning">
+                                <i class="fas fa-broom"></i>
+                                <span>Cleaning</span>
+                            </div>
+                            <div class="service-option" data-service="handyman">
+                                <i class="fas fa-tools"></i>
+                                <span>Handyman</span>
+                            </div>
+                            <div class="service-option" data-service="other">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
+                            </div>
+                        </div>
+                        <input type="hidden" name="service_type" id="serviceType" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first_name" class="form-label">First Name *</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name" class="form-label">Last Name *</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                        <p class="form-note">We'll only use this to contact you about your service request.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service_description" class="form-label">Service Description *</label>
+                        <textarea id="service_description" name="service_description" class="form-control" rows="3" required placeholder="Please describe the service you need in detail"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="preferred_date" class="form-label">Preferred Service Date</label>
+                            <input type="date" id="preferred_date" name="preferred_date" class="form-control">
+                        </div>
+                        <div class="form-group half">
+                            <label for="preferred_time" class="form-label">Preferred Time</label>
+                            <select id="preferred_time" name="preferred_time" class="form-control">
+                                <option value="">Any Time</option>
+                                <option value="morning">Morning (8am - 12pm)</option>
+                                <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                                <option value="evening">Evening (5pm - 8pm)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="street_address" class="form-label">Street Address *</label>
+                        <input type="text" id="street_address" name="street_address" class="form-control" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="city" class="form-label">City *</label>
+                            <input type="text" id="city" name="city" class="form-control" required>
+                        </div>
+                        <div class="form-group quarter">
+                            <label for="state" class="form-label">State *</label>
+                            <select id="state" name="state" class="form-control" required>
+                                <option value="">Select State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <!-- Add all other states -->
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                        <div class="form-group quarter">
+                            <label for="zip_code" class="form-label">ZIP Code *</label>
+                            <input type="text" id="zip_code" name="zip_code" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additional_notes" class="form-label">Additional Notes</label>
+                        <textarea id="additional_notes" name="additional_notes" class="form-control" rows="2" placeholder="Any special instructions or additional information..."></textarea>
+                    </div>
+
+                    <div class="tcpa-consent">
+                        <p>
+                            <input type="checkbox" id="tcpa_consent" name="tcpa_consent" required>
+                            <label for="tcpa_consent">
+                                By checking this box, I consent to receive calls, text messages, and/or emails from our company and our partners at the phone number and email address provided above, including through the use of automated technology and a pre-recorded message, even if my telephone number is a mobile number or is currently listed on any state, federal or corporate Do Not Call list. I understand that consent is not a condition of purchase and that I may revoke my consent at any time. Message and data rates may apply. For more information, please see our <a href="#" target="_blank">Privacy Policy</a> and <a href="#" target="_blank">Terms of Service</a>.
+                            </label>
+                        </p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="margin: 1.5rem 0 0 0;">
+                        <i class="fas fa-paper-plane"></i> Submit Service Request
+                    </button>
+            </form>
+        </div>
+        
+        <div class="sidebar">
+            <!-- Sidebar content can be added here in the future -->
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize stars background
+            initStars();
+            
+            // Set user agent and source URL
+            document.getElementById('user_agent').value = navigator.userAgent;
+            document.getElementById('source_url').value = window.location.href;
+            document.getElementById('referrer').value = document.referrer || 'direct';
+            
+            // Get URL parameters for tracking
+            const urlParams = new URLSearchParams(window.location.search);
+            document.querySelector('input[name="lp_campaign_key"]').value = urlParams.get('lp_campaign_key') || '';
+            document.querySelector('input[name="lp_s1"]').value = urlParams.get('lp_s1') || '';
+            document.querySelector('input[name="lp_s2"]').value = urlParams.get('lp_s2') || '';
+            document.querySelector('input[name="lp_s3"]').value = urlParams.get('lp_s3') || '';
+            document.querySelector('input[name="lp_s4"]').value = urlParams.get('lp_s4') || '';
+            document.querySelector('input[name="lp_s5"]').value = urlParams.get('lp_s5') || '';
+            
+            // Get IP address
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip_address').value = data.ip;
+                })
+                .catch(() => {
+                    document.getElementById('ip_address').value = 'unknown';
+                });
+            
+            // Service selection
+            const serviceOptions = document.querySelectorAll('.service-option');
+            const serviceTypeInput = document.getElementById('serviceType');
+
+            serviceOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    serviceOptions.forEach(opt => opt.classList.remove('active'));
+
+                    // Add active class to clicked option
+                    this.classList.add('active');
+
+                    // Update hidden input value
+                    serviceTypeInput.value = this.getAttribute('data-service');
+                });
+            });
+
+            // Form submission
+            const form = document.getElementById('homeServicesForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Basic validation
+                    let isValid = true;
+                    const requiredFields = form.querySelectorAll('[required]');
+
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.classList.add('error');
+                            
+                            // Scroll to first error
+                            if (isValid) {
+                                field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                        } else {
+                            field.classList.remove('error');
+                        }
+                    });
+
+                    if (!serviceTypeInput.value) {
+                        isValid = false;
+                        alert('Please select a service type');
+                        document.querySelector('.service-type-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return false;
+                    }
+
+                    if (!isValid) {
+                        alert('Please fill in all required fields');
+                        return false;
+                    }
+
+                    // Show loading state
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+                    // Submit form data
+                    const formData = new FormData(this);
+                    
+                    // Add timestamp
+                    formData.append('submission_time', new Date().toISOString());
+                    
+                    // Convert FormData to URL-encoded string for better debugging
+                    const formDataString = new URLSearchParams(formData).toString();
+                    
+                    // Log form data for debugging
+                    console.log('Submitting form data:', Object.fromEntries(formData.entries()));
+                    
+                    // Submit to LeadsPedia
+                    fetch(this.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formDataString
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Lead submission response:', data);
+                        
+                        // Check for success based on LeadsPedia response structure
+                        if (data && (data.status === 'success' || data.success)) {
+                            // Show success message
+                            alert('Thank you! Your service request has been submitted. We will contact you shortly.');
+                            
+                            // Redirect to thank you page if provided in response
+                            if (data.redirect_url) {
+                                window.location.href = data.redirect_url;
+                                return;
+                            }
+                            
+                            // Reset form
+                            this.reset();
+                            serviceOptions.forEach(opt => opt.classList.remove('active'));
+                            
+                            // Scroll to top
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                            // Handle error from LeadsPedia
+                            const errorMessage = data.message || data.error || 'Submission failed. Please try again.';
+                            throw new Error(errorMessage);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert(`There was an error submitting your request: ${error.message}`);
+                    })
+                    .finally(() => {
+                        // Reset button state
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                        }
+                    });
+                    
+                    return false;
+                });
+            }
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('preferred_date');
+            if (dateInput) {
+                dateInput.min = today;
+            }
+            
+            // Add animation to form elements on scroll
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.form-group, .benefit-item, .service-option');
+                elements.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 50) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initial check
+            animateOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+        
+        // Initialize stars background
+        function initStars() {
+            const stars = document.getElementById('stars');
+            if (!stars) return;
+            
+            // Clear existing stars
+            stars.innerHTML = '';
+            
+            // Create stars
+            const starsCount = Math.floor(window.innerWidth * window.innerHeight / 1000);
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size between 1-3px
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random animation duration between 2-5s
+                star.style.animationDuration = `${2 + Math.random() * 3}s`;
+                
+                stars.appendChild(star);
+            }
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(initStars, 250);
+            });
+        }
+    </script>
+    <style>
+        /* Ensure html and body take full height and have no margin/padding */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: var(--space-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Stars Background */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Container & Form Styling */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-container {
+            padding: 1rem 0 0 0;
+            margin-bottom: 0;
+            min-height: calc(100vh - 1rem);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Form card styling */
+        .form-card {
+            margin-bottom: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Ensure form takes remaining space */
+        #homeServicesForm {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Push the submit button to the bottom */
+        .btn-primary[type="submit"] {
+            margin-top: auto;
+        }
+        
+        /* Ensure form elements are above the stars */
+        .form-container, .sidebar {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</body>
+</html>

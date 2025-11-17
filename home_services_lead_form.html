@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Services | Demo Form Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/space-theme.css">
+    <style>
+        /* Space Theme Variables */
+        :root {
+            --space-blue: #3b82f6;
+            --space-indigo: #6366f1;
+            --space-purple: #8b5cf6;
+            --space-yellow: #f59e0b;
+            --space-green: #10b981;
+            --space-white: #f8fafc;
+            --space-gray: #1e293b;
+            --space-dark: #0f172a;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--space-white);
+            background: #0a0e17;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e17, #06090f);
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            from { opacity: 0.2; }
+            to { opacity: 1; }
+        }
+        
+        /* Form Container */
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            z-index: 1;
+            padding: 0 1.5rem;
+        }
+        
+        .form-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, rgba(26, 86, 166, 0.9), rgba(30, 66, 159, 0.9));
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(66, 153, 225, 0.3);
+        }
+        
+        .form-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+        
+        .form-header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .form-body {
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--space-white);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 0.5rem;
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--space-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--space-blue);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        .btn-submit {
+            display: inline-block;
+            background: var(--space-blue);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn-submit:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .form-note {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-note a {
+            color: var(--space-blue);
+            text-decoration: none;
+        }
+        
+        .form-note a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .success-message h2 {
+            color: var(--space-green);
+            margin: 1rem 0;
+            font-size: 1.8rem;
+        }
+        
+        .success-message p {
+            color: #e2e8f0;
+            margin: 1.5rem auto 2rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(90deg, var(--space-purple), var(--space-indigo));
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+            
+            .form-header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .form-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .form-body {
+                padding: 1.5rem 1rem;
+            }
+            
+            .btn-submit {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="space-theme">
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1><i class="fas fa-home"></i> Home Services</h1>
+                <p>Schedule your home service today</p>
+            </div>
+            
+            <form id="homeServiceForm" action="https://learn.leadspediatrack.com/post.do" method="POST" class="form-body">
+                <!-- Hidden Fields for LeadsPedia -->
+                <input type="hidden" name="lp_campaign_id" value="686e91b7823d9">
+                <input type="hidden" name="lp_campaign_key" value="xHTByjcZpQh93DKvMrm6">
+                <input type="hidden" name="lp_response" value="json">
+                <input type="hidden" name="ip_address" id="ip_address">
+                <input type="hidden" name="sub_id" id="sub_id">
+                
+                <div class="form-group">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" id="first_name" name="first_name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="zip_code" class="form-label">ZIP Code</label>
+                    <input type="text" id="zip_code" name="zip_code" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service_type" class="form-label">Service Type</label>
+                    <select id="service_type" name="service_type" class="form-control" required>
+                        <option value="">Select a service</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="hvac">HVAC</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="landscaping">Landscaping</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="appointment_date" class="form-label">Preferred Appointment Date</label>
+                    <input type="date" id="appointment_date" name="appointment_date" class="form-control" min="" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="appointment_time" class="form-label">Preferred Time</label>
+                    <select id="appointment_time" name="appointment_time" class="form-control" required>
+                        <option value="">Select a time</option>
+                        <option value="morning">Morning (8am - 12pm)</option>
+                        <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                        <option value="evening">Evening (5pm - 8pm)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service_description" class="form-label">Service Description</label>
+                    <textarea id="service_description" name="service_description" rows="4" class="form-control" placeholder="Please describe the service you need..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Schedule My Service <i class="fas fa-arrow-right"></i></button>
+                
+                <p class="form-note">By submitting this form, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            </form>
+            
+            <!-- Success Message (initially hidden) -->
+            <div id="successMessage" class="success-message">
+                <div style="margin-bottom: 2rem;">
+                    <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 60px; width: auto; margin-bottom: 1rem;">
+                </div>
+                <h2>Thank you for your request!</h2>
+                <p>A home services professional will contact you shortly to confirm your appointment.</p>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer style="text-align: center; padding: 1.5rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+        <p>2025 Breakfast Club Publishing. All rights reserved.</p>
+        <div style="margin-top: 0.5rem;">
+            <p style="font-size: 0.8rem; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7);">Powered by</p>
+            <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 45px; width: auto; margin-top: 0.5rem;">
+        </div>
+    </footer>
+    
+    <script>
+        // Create stars for background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size between 1 and 3 pixels
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Get IP address
+        async function getIPAddress() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                document.getElementById('ip_address').value = data.ip;
+            } catch (error) {
+                console.error('Error fetching IP address:', error);
+            }
+        }
+        
+        // Form submission
+        document.getElementById('homeServiceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            const formBody = new URLSearchParams(formData).toString();
+            
+            // Submit to LeadsPedia and handle response
+            fetch('https://learn.leadspediatrack.com/post.do', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formBody
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log('LeadsPedia response:', responseText);
+                
+                // Show success message
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your information. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Schedule My Service <i class="fas fa-arrow-right"></i>';
+            });
+        });
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create stars background
+            createStars();
+            
+            // Get IP address
+            getIPAddress();
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('appointment_date').min = today;
+            
+            // Get sub_id from URL if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const subId = urlParams.get('subid') || urlParams.get('sub_id') || '';
+            document.getElementById('sub_id').value = subId;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>

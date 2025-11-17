@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About LeadsPedia | Demo Form Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <style>
+        .home-button {
+            left: 20px;
+            right: auto;
+            bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .home-button {
+                left: 15px;
+                bottom: 15px;
+            }
+        }
+        
+        :root {
+            /* Dark Theme Colors */
+            --primary: #1a56a6;
+            --primary-hover: #144a8c;
+            --primary-light: #e8f0fa;
+            --primary-transparent: rgba(26, 86, 166, 0.1);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --gray-100: #f8fafc;
+            --gray-200: #f1f5f9;
+            --gray-300: #e2e8f0;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --accent: #60a5fa;
+        }
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background: #0f172a !important;
+            color: #e2e8f0 !important;
+        }
+        
+        * {
+            background-color: transparent !important;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .modern-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 1.5rem 0;
+            position: relative;
+            text-align: center;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+        }
+        
+        .modern-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            margin: 0.5rem 0 1rem;
+            transition: transform 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }      
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .main-logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 12px rgba(96, 165, 250, 0.3));
+            margin: 1rem auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .main-logo:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 4px 16px rgba(96, 165, 250, 0.4));
+        }
+        
+        .main-title {
+            font-size: 2rem;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0.5rem 0 1rem;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0.5rem auto 1rem;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+        }
+        
+        .header-cta {
+            position: relative;
+            z-index: 2;
+            margin: 0.5rem 0 1rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6) !important;
+            color: white !important;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .header-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            .modern-header {
+                padding: 3rem 1.5rem 5rem;
+            }
+            
+            .main-title {
+                font-size: 2.25rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+        }
+        
+        /* Modern Tab Styles */
+        .tabs {
+            display: flex;
+            margin: 3rem 0 2.5rem;
+            gap: 0.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 0.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            max-width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .tabs::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari */
+        }
+        
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #94a3b8;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .tab-button.active {
+            color: var(--primary);
+            background: rgba(26, 86, 166, 0.05);
+        }
+        
+        .tab-button.active:after {
+            width: 100%;
+            transform: translateX(-50%);
+        }
+        
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        :root {
+            --primary: #1a56a6;
+            --secondary: #1e429f;
+            --accent: #3b82f6;
+            --text: #1f2937;
+            --light-bg: #f9fafb;
+            --border: #e5e7eb;
+            --success: #10b981;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            border-radius: 0 0 2rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .feature-section {
+            margin-bottom: 6rem;
+            position: relative;
+            background: rgba(15, 23, 42, 0.5) !important;
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+        
+        .feature-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .feature-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: 2px;
+        }
+        
+        .feature-section h3 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1.5rem;
+            color: var(--primary);
+        }
+        
+        .feature-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .feature-card {
+            background: rgba(26, 86, 166, 0.15);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(26, 86, 166, 0.2);
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(96, 165, 250, 0.1), 0 8px 10px -6px rgba(96, 165, 250, 0.1);
+            border-color: rgba(96, 165, 250, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+            background: rgba(96, 165, 250, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-card h3 {
+            color: var(--accent);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.25rem;
+            width: 100%;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(26, 86, 166, 0.15);
+            border-radius: 16px;
+            margin: 4rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(26, 86, 166, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-weight: 700;
+            background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 25px rgba(59, 130, 246, 0.4);
+            border: none;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.6);
+        }
+        
+        /* What is LeadsPedia Section */
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3), 0 2px 4px -1px rgba(99, 102, 241, 0.2);
+        }
+        
+        .icon-container i {
+            font-size: 1.75rem;
+            color: white;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+        }
+        
+        .section-title {
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .gradient-text {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+            margin: 0;
+            display: inline-block;
+            line-height: 1.2;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .gradient-text::after {
+            display: none;
+        }
+        
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(96, 165, 250, 0.1);
+            color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            transition: all 0.2s ease;
+        }
+        
+        .highlight-badge i {
+            color: #60a5fa;
+            font-size: 0.9em;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a5b4fc;
+            font-weight: 500;
+        }
+        
+        .description {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0 0 0;
+            padding: 0 1rem;
+        }
+        
+        .feature-list {
+            margin: 0;
+            padding: 0 0 0 1.25rem;
+            list-style: none;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list i {
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            min-width: 1.25rem;
+        }
+        
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .highlight-item i {
+            color: #818cf8;
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed) !important;
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3), 0 2px 4px -1px rgba(79, 70, 229, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.2);
+        }
+        
+        .cta-button i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover i {
+            transform: translateX(4px);
+        }
+        
+        /* Integration Resources Styles */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .integration-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .integration-widget {
+            background: rgba(26, 32, 44, 0.7);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .integration-widget:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .widget-header {
+            padding: 1.25rem 1.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .widget-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .widget-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 0;
+        }
+        
+        .widget-header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .widget-icon-bg {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .widget-header h3 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            height: 24px;
+            padding: 0 10px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .widget-content {
+            padding: 1rem;
+            background: rgba(17, 24, 39, 0.4);
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            box-sizing: border-box;
+        }
+        
+        .widget-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+        
+        .feature-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 8px 6px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            min-height: 70px;
+            justify-content: center;
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .feature-pill i {
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        
+        .feature-pill span:first-of-type {
+            font-weight: 500;
+            font-size: 0.75rem;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        
+        .widget-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: calc(100% - 2rem);
+            margin: 1rem;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .widget-button i {
+            margin-left: 8px;
+            transition: transform 0.2s ease;
+        }
+        
+        .widget-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        .widget-button:hover i {
+            transform: translateX(3px);
+        }
+        
+        .integration-card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .integration-card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(96, 165, 250, 0.2);
+        }
+        
+        .integration-card-hover:hover::before {
+            opacity: 1;
+        }
+        
+        .integration-card-hover h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+        
+        .integration-card-hover p {
+            color: #94a3b8;
+            margin: 0.5rem 0 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .integration-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1)) !important;
+            color: #60a5fa !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            width: 100%;
+            margin-top: auto;
+        }
+        
+        .integration-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .integration-button:hover {
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .integration-button:hover::before {
+            opacity: 1;
+        }
+        
+        .integration-button i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .integration-button:hover i {
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+            .integration-card-hover {
+                margin-bottom: 1.5rem;
+            }
+            
+            .integration-card-hover h3 {
+                font-size: 1.35rem;
+            }
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .integration-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+        
+        .cta-button i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        .info-box {
+            background: rgba(239, 246, 255, 0.6);
+            border-left: 4px solid var(--accent);
+            padding: 1.75rem;
+            margin: 2.5rem 0;
+            border-radius: 0 12px 12px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .info-box h3, 
+        .info-box h4 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .info-box h4 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .info-box p {
+            margin: 0.5rem 0 0;
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        
+        .info-box h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .info-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .info-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Floating Help Button */
+        .help-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .help-button:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        /* Process Steps Styling */
+        .process-steps {
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .process-step {
+            display: flex;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 12px rgba(26, 86, 166, 0.2);
+            z-index: 2;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .step-content h4 {
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .step-content p {
+            margin: 0;
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        
+        /* FAQ Styling */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.7) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question {
+            padding: 1.5rem 2rem;
+            background: rgba(15, 23, 42, 0.7);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            color: #e2e8f0;
+        }
+        
+        .faq-question:hover {
+            background: rgba(26, 86, 166, 0.3);
+        }
+        
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+        
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(15, 23, 42, 0.5);
+            color: #e2e8f0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-answer-inner {
+            padding: 0 2rem 2rem;
+        }
+        
+        .faq-answer p, 
+        .faq-answer ul {
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer ul {
+            padding-left: 1.5rem;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 2000px;
+            padding: 0 2rem 2rem;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .lead {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem 1.25rem;
+            }
+            
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.75rem;
+            }
+            
+            header {
+                padding: 3rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="modern-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="leadspedia-logo.png" alt="LeadsPedia" class="main-logo">
+            </div>
+            <p class="subtitle">The Complete Lead Management and Distribution Platform</p>
+        </div>
+        <div class="header-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512,52,583,67.32c69.27,15,138.3,24.22,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#0f172a"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#0f172a"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#0f172a"></path>
+            </svg>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="feature-section" style="margin-bottom: 1.5rem; padding: 1.5rem; background: rgba(17, 24, 39, 0.4); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div style="text-align: center; margin-bottom: 1rem;">
+                <h2 class="gradient-text" style="margin: 0; font-size: 1.75rem;">What is LeadsPedia?</h2>
+                <p style="margin: 0.5rem 0 0; color: #94a3b8; font-size: 1.1rem;">
+                    A comprehensive lead management platform that helps businesses capture, validate, and distribute leads effectively.
+                </p>
+            </div>
+            <div class="highlights" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1rem;">
+                <span class="highlight-badge"><i class="fas fa-bolt"></i> Real-time Processing</span>
+                <span class="highlight-badge"><i class="fas fa-shield-alt"></i> Fraud Detection</span>
+                <span class="highlight-badge"><i class="fas fa-chart-line"></i> Analytics</span>
+                <span class="highlight-badge"><i class="fas fa-phone-alt"></i> Call Tracking</span>
+                <span class="highlight-badge"><i class="fas fa-sitemap"></i> Smart Distribution</span>
+            </div>
+        </section>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs" style="margin: 0 0 2rem 0;">
+            <button class="tab-button active" data-tab="leads-tab">
+                <i class="fas fa-users"></i>
+                <span>Leads</span>
+            </button>
+            <button class="tab-button" data-tab="calls-tab">
+                <i class="fas fa-phone-alt"></i>
+                <span>Calls</span>
+            </button>
+            <button class="tab-button" data-tab="buyer-portal-tab">
+                <i class="fas fa-user-tie"></i>
+                <span>Buyer Portal</span>
+            </button>
+            <button class="tab-button" data-tab="integration-tab">
+                <i class="fas fa-plug"></i>
+                <span>Integration</span>
+            </button>
+            <button class="tab-button" data-tab="onboarding-tab">
+                <i class="fas fa-user-graduate"></i>
+                <span>Onboarding</span>
+            </button>
+            <button class="tab-button" data-tab="faq-tab">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQ</span>
+            </button>
+        </div>
+
+        <section class="feature-section" style="margin-top: 0; padding-top: 0;">
+            <!-- Tab Content Containers -->
+            
+            <!-- Leads Tab Content -->
+            <div id="leads-tab" class="tab-content">
+                <div class="section-header mb-8">
+                    <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Lead Management Solutions</h2>
+                    <p class="text-lg text-gray-300 max-w-4xl">Streamline your lead generation and distribution process with our comprehensive suite of tools designed to maximize efficiency and conversion rates.</p>
+                </div>
+                
+                <div class="screenshot-container" style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);">
+                    <img src="Leadsscreenshot.png" alt="LeadsPedia Lead Management Dashboard" style="width: 100%; height: auto; display: block;">
+                </div>
+                
+                <div class="mt-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-white/5">
+                    <div class="max-w-3xl mx-auto">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Complete Lead Intelligence</h3>
+                        <p class="text-gray-300 text-center mb-8">Get end-to-end visibility and control over your lead generation and conversion process with our integrated solution.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-sync-alt text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Real-time Lead Tracking & Analytics</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Monitor leads with live updates while tracking conversion rates and campaign effectiveness in one unified dashboard.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-filter text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Advanced Segmentation & Source Attribution</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Filter leads with powerful query tools and identify top-performing channels and campaigns with detailed source attribution.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-project-diagram text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Custom Workflows & Reporting</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Tailor lead processing with flexible automation and generate detailed reports for data-driven decisions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Calls Tab Content -->
+            <div id="calls-tab" class="tab-content">
+                <div class="section-header mb-8">
+                    <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Call Tracking & Management</h2>
+                    <p class="text-lg text-gray-300 max-w-4xl">Gain valuable insights into your call performance and optimize your marketing ROI with our advanced call tracking and management solutions.</p>
+                </div>
+                
+                <div class="screenshot-container" style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);">
+                    <img src="Callsscreenshot.png" alt="LeadsPedia Call Tracking Dashboard" style="width: 100%; height: auto; display: block;">
+                </div>
+                
+                <section class="feature-section mt-16">
+                    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Call Management Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone-volume"></i>
+                            </div>
+                            <h3>Call Recording</h3>
+                            <p>Record and review calls for quality assurance, training, and compliance purposes with our secure call recording system.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Call Analytics</h3>
+                            <p>Track call duration, peak times, and conversion rates with comprehensive call analytics and reporting tools.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <h3>Smart Routing</h3>
+                            <p>Route calls to the most appropriate agent or department based on caller input, time of day, or other custom rules.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sms"></i>
+                            </div>
+                            <h3>SMS Integration</h3>
+                            <p>Follow up with callers via SMS with automated or manual messages to improve engagement and conversion rates.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-fingerprint"></i>
+                            </div>
+                            <h3>Caller ID & Tracking</h3>
+                            <p>Track call sources and identify returning callers with detailed caller ID and call tracking capabilities.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3>Voicemail Drop</h3>
+                            <p>Increase agent efficiency with one-click voicemail drop functionality for faster call handling.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="mt-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-white/5">
+                    <div class="max-w-3xl mx-auto">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Complete Call Intelligence</h3>
+                        <p class="text-gray-300 text-center mb-8">Maximize the value of every call with our integrated call tracking, analysis, and routing system.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-phone-volume text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Call Analytics & Recording</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Track call performance with detailed analytics, recording, and transcription to optimize your marketing spend and agent performance.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-route text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Intelligent Call Routing</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Route calls based on time, location, or custom rules with our smart IVR system and ensure no call goes unanswered with failover handling.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-chart-pie text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Performance Insights</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Gain actionable insights with call scoring, quality monitoring, and conversion tracking to continuously improve your call handling.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Buyer Portal Tab Content -->
+            <div id="buyer-portal-tab" class="tab-content">
+                <div class="section-header mb-8">
+                    <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Buyer Portal</h2>
+                    <p class="text-lg text-gray-300 max-w-4xl">Manage your leads, calls, and payments through our secure buyer portal with real-time insights and controls.</p>
+                </div>
+                
+                <div class="screenshot-container" style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);">
+                    <img src="portalscreenshot.png" alt="LeadsPedia Buyer Portal Dashboard" style="width: 100%; height: auto; display: block;" onerror="this.onerror=null; this.src='Portalhomepage.png'">
+                </div>
+                
+                <section class="feature-section mt-16">
+                    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Buyer Portal Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h3>Real-time Dashboard</h3>
+                            <p>Monitor your lead performance, call metrics, and account activity through an intuitive dashboard.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h3>Call Management</h3>
+                            <p>Access call recordings, transcripts, and performance analytics to optimize conversions.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h3>Billing & Payments</h3>
+                            <p>View invoices, manage payment methods, and track your account balance securely.</p>
+                            <div class="mt-3 flex justify-center space-x-4">
+                                <img src="stripelogo.png" alt="Stripe" style="height: 20px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg'">
+                                <img src="authorizenewlogo.png" alt="Authorize.net" style="height: 20px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='https://www.authorize.net/content/dam/anet-redesign/logo/authorize-net-logo-2x.png'">
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Performance Analytics</h3>
+                            <p>Track ROI and campaign performance with detailed analytics and reporting.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <h3>Custom Settings</h3>
+                            <p>Tailor the portal to your needs with customizable preferences and alerts.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3>Dedicated Support</h3>
+                            <p>Get 24/7 support from our team of experts for any questions or issues.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Onboarding Tab Content -->
+            <div id="onboarding-tab" class="tab-content">
+                <div class="section-header mb-8">
+                    <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Dedicated Onboarding Support</h2>
+                    <p class="text-lg text-gray-300 max-w-4xl">Your success is our priority from day one with personalized onboarding and expert guidance.</p>
+                </div>
+                
+                <div class="screenshot-container" style="margin: 1rem 0; max-width: 800px; margin-left: auto; margin-right: auto; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+                    <img src="dedicatedonboardingsupport.png" alt="LeadsPedia Onboarding Process" style="width: 100%; height: auto; display: block; max-height: 400px; object-fit: contain;" onerror="this.onerror=null; this.src='onboarding.jpg'">
+                </div>
+                
+                <div class="mt-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-white/5">
+                    <div class="max-w-3xl mx-auto">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Your Path to Success</h3>
+                        <p class="text-gray-300 text-center mb-8">We're with you every step of the way, from initial setup to full optimization of your lead management system.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-user-tie text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Dedicated Customer Success Manager</h4>
+                                    <p class="text-gray-400 text-sm mt-1">You'll be paired with a dedicated Customer Success Manager who will work closely with your team to build a solid foundation for success. They'll be your main point of contact throughout the onboarding process and beyond.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-tools text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Custom Implementation</h4>
+                                    <p class="text-gray-400 text-sm mt-1">We'll work with you to customize and implement the platform according to your specific business needs, ensuring you have all the tools to scale, manage, and implement your own workflows effectively.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-headset text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Expert Support Team</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Our team of experts, based in our Nashville, Tennessee headquarters, is available through live chat to provide immediate assistance and ensure your success with our platform.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Tab Content -->
+            <div id="faq-tab" class="tab-content">
+                <section class="feature-section">
+                    <h2>Frequently Asked Questions</h2>
+                    <p class="lead" style="max-width: 800px; margin: 0 auto 3rem;">Find answers to common questions about LeadsPedia's platform, features, and implementation process.</p>
+                    
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How does LeadsPedia ensure lead quality and prevent fraud?</h3>
+                                <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>LeadsPedia employs advanced fraud detection algorithms and real-time validation to ensure lead quality. Our system checks for duplicate leads, verifies email addresses and phone numbers, and uses machine learning to identify suspicious patterns. We also offer customizable validation rules to match your specific requirements.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What integration options are available with LeadsPedia?</h3>
+                                <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>LeadsPedia offers multiple integration options including REST API, webhooks, and pre-built connectors for popular CRMs like Salesforce, HubSpot, and Zoho. We also support Zapier integration for connecting with thousands of other applications, and our team can assist with custom integrations if needed.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How does the pricing work for LeadsPedia?</h3>
+                                <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>LeadsPedia offers flexible pricing based on your specific needs, including pay-per-lead and subscription-based models. Pricing depends on factors like lead volume, required features, and level of support. Contact our sales team for a customized quote based on your business requirements.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What kind of data security measures does LeadsPedia have in place?</h3>
+                                <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>LeadsPedia takes data security seriously. We use 256-bit SSL encryption for all data in transit and at rest. Our platform is SOC 2 Type II compliant, and we regularly undergo third-party security audits. We also offer data residency options and can sign Data Processing Agreements (DPAs) as needed.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Can I customize the lead distribution rules?</h3>
+                                <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, our platform offers highly customizable distribution rules. You can set up rules based on lead source, geographic location, lead score, time of day, and more. You can also create different rule sets for different campaigns or client requirements, with the ability to rotate or distribute leads based on percentage splits or round-robin distribution.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What kind of reporting and analytics are available?</h3>
+                                <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>LeadsPedia provides comprehensive reporting and analytics including lead source performance, conversion rates, ROI tracking, and more. You can generate custom reports, set up automated email reports, and view real-time dashboards to monitor your campaigns. Our advanced analytics also include lead scoring, conversion tracking, and ROI analysis to help you optimize your lead generation efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Integration Tab Content -->
+            <div id="integration-tab" class="tab-content">
+                <div class="section-header mb-8">
+                    <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Integration Solutions</h2>
+                    <p class="text-lg text-gray-300 max-w-4xl">Seamlessly connect LeadsPedia with your existing tools and platforms using our powerful integration capabilities.</p>
+                </div>
+                
+                <section class="feature-section mt-16">
+                    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Integration Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>RESTful API</h3>
+                            <p>Powerful API endpoints for custom integrations with your existing systems and workflows.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h3>Webhook Support</h3>
+                            <p>Real-time data synchronization with instant webhook notifications for all lead events.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <h3>Pre-built Connectors</h3>
+                            <p>One-click integrations with popular CRM and marketing automation platforms.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync"></i>
+                            </div>
+                            <h3>Data Sync</h3>
+                            <p>Bidirectional data synchronization to keep all your systems up to date.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Secure Authentication</h3>
+                            <p>Enterprise-grade security with OAuth 2.0 and API key authentication.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>Developer Tools</h3>
+                            <p>Comprehensive <a href="https://developer.leadspedia.com/" target="_blank" class="text-blue-400 hover:text-blue-300 underline">API documentation</a>, SDKs, and developer resources.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="mt-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-white/5">
+                    <div class="max-w-3xl mx-auto">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Complete Integration Platform</h3>
+                        <p class="text-gray-300 text-center mb-8">Connect LeadsPedia with your entire tech stack using our flexible integration options and developer-friendly tools.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-code text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Developer-Friendly API</h4>
+                                    <p class="text-gray-400 text-sm mt-1">RESTful API with clear documentation, SDKs, and sample code for all major programming languages.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-exchange-alt text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Seamless Data Flow</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Bidirectional data synchronization ensures all your systems stay up to date in real-time.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
+                                    <i class="fas fa-shield-alt text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-medium">Enterprise Security</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Robust security features including OAuth 2.0, IP whitelisting, and role-based access controls.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Core Features Section for Leads Tab -->
+            <div id="leads-tab" class="tab-content active">
+                <section class="feature-section mt-16">
+                    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Lead Management Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Lead Distribution</h3>
+                            <p>Automatically route leads to the right destinations based on customizable rules, ensuring optimal distribution and maximum conversion rates.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Real-time Analytics</h3>
+                            <p>Gain valuable insights into your lead generation performance with comprehensive dashboards and detailed reporting tools.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Lead Validation</h3>
+                            <p>Ensure lead quality with built-in validation tools that verify contact information and filter out invalid or duplicate leads.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync"></i>
+                            </div>
+                            <h3>Postback URLs</h3>
+                            <p>Track conversions and optimize campaigns with real-time postback notifications to your tracking platforms.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h3>Workflow Automation</h3>
+                            <p>Automate repetitive tasks and create custom workflows to streamline your lead management process.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Security & Compliance</h3>
+                            <p>Enterprise-grade security features and compliance with industry standards to protect your data and ensure privacy.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        
+        <section class="feature-section" style="margin: 3rem 0 0; background: rgba(17, 24, 39, 0.4); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 class="gradient-text" style="margin: 0 0 1rem; font-size: 1.75rem;">How It Works</h2>
+                <p style="color: #94a3b8; max-width: 800px; margin: 0 auto 1.5rem;">Streamline your lead management from capture to conversion with our intuitive platform</p>
+                
+                <div style="max-width: 100%; margin: 2rem auto; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(15, 23, 42, 0.4);">
+                    <div style="position: relative; width: 100%;">
+                        <div style="padding: 1.5rem; display: flex; justify-content: center; align-items: center; min-height: 300px;">
+                            <img 
+                                src="workflowdiagram.png" 
+                                alt="LeadsPedia Workflow Process" 
+                                onerror="this.onerror=null; this.src='Screenshot 2025-10-27 at 10.21.15 AM.png'"
+                                style="max-width: 100%; max-height: 100%; object-fit: contain;"
+                            >
+                        </div>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%); mix-blend-mode: overlay; pointer-events: none;"></div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.6); padding: 1rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+                        <p style="margin: 0; color: #94a3b8; font-size: 0.9rem; font-weight: 500;">Visual representation of the LeadsPedia workflow process</p>
+                    </div>
+                </div>
+                
+                <div style="margin: 2.5rem 0 1rem; padding: 0 1rem;">
+                    <h3 style="color: #e2e8f0; font-size: 1.25rem; margin-bottom: 1.5rem;">Key Process Steps</h3>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1rem 0 0;">
+                <div style="background: rgba(30, 41, 59, 0.5); border-radius: 10px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="width: 50px; height: 50px; background: rgba(96, 165, 250, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #60a5fa; font-size: 1.25rem;">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h4 style="margin: 0 0 0.5rem; color: white; font-size: 1.1rem;">Capture</h4>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Collect leads from multiple channels with real-time validation</p>
+                </div>
+                
+                <div style="background: rgba(30, 41, 59, 0.5); border-radius: 10px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="width: 50px; height: 50px; background: rgba(96, 165, 250, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #60a5fa; font-size: 1.25rem;">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4 style="margin: 0 0 0.5rem; color: white; font-size: 1.1rem;">Process</h4>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Automatically validate and enrich lead data</p>
+                </div>
+                
+                <div style="background: rgba(30, 41, 59, 0.5); border-radius: 10px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="width: 50px; height: 50px; background: rgba(96, 165, 250, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #60a5fa; font-size: 1.25rem;">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h4 style="margin: 0 0 0.5rem; color: white; font-size: 1.1rem;">Distribute</h4>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Route leads based on custom rules and parameters</p>
+                </div>
+                
+                <div style="background: rgba(30, 41, 59, 0.5); border-radius: 10px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="width: 50px; height: 50px; background: rgba(96, 165, 250, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #60a5fa; font-size: 1.25rem;">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4 style="margin: 0 0 0.5rem; color: white; font-size: 1.1rem;">Analyze</h4>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Track performance with real-time dashboards</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+                <p style="color: #94a3b8; margin-bottom: 1.5rem;">Seamlessly integrates with your existing tools via API, webhooks, and native connectors</p>
+                <a href="#integration-tab" class="tab-button" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                    <i class="fas fa-plug"></i>
+                    <span>View Integrations</span>
+                </a>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Transform Your Lead Management?</h2>
+                <p>Discover how LeadsPedia can help you streamline your lead generation and distribution process with our powerful platform.</p>
+                <a href="index.html#demo-form" class="cta-button">Request a Demo <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+        
+    </div>
+    
+    <footer style="text-align: center; padding: 2rem; background: rgba(15, 23, 42, 0.8); margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <p style="color: #94a3b8;"> 2025 Demo Form Hub. This is an informational page about LeadsPedia.</p>
+        <p><a href="index.html" class="info-link" style="color: var(--accent); text-decoration: none;">Back to Home</a></p>
+    </footer>
+    
+    <a href="index.html" class="help-button home-button" id="backToHome" title="Back to Home">
+        <i class="fas fa-home"></i>
+    </a>
+    
+    <a href="#" class="help-button" id="backToTop" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <style>
+        /* Feature Card Hover Styles */
+        .feature-card-hover {
+            background: rgba(26, 86, 166, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(26, 86, 166, 0.2);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+        
+        .feature-card-hover .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .feature-card-hover h3 {
+            color: #e2e8f0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-card-hover p {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+        
+        .feature-list i {
+            margin-right: 0.5rem;
+            font-size: 0.8em;
+        }
+        
+        /* Add smooth transition for tab content */
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+            animation: fadeIn 0.5s ease-out;
+            background: transparent !important;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tab-button {
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #1a56a6;
+            transition: width 0.3s ease;
+        }
+        
+        .tab-button.active::after {
+            width: 100%;
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            let isAnimating = false;
+            
+            // FAQ Toggle Functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const toggle = item.querySelector('.faq-toggle i');
+                
+                // Initially hide all answers
+                answer.style.display = 'none';
+                
+                question.addEventListener('click', () => {
+                    // Toggle the active class on the clicked item
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other open FAQ items
+                    faqItems.forEach(faqItem => {
+                        if (faqItem !== item) {
+                            faqItem.classList.remove('active');
+                            const otherAnswer = faqItem.querySelector('.faq-answer');
+                            const otherToggle = faqItem.querySelector('.faq-toggle i');
+                            otherAnswer.style.display = 'none';
+                            otherToggle.classList.remove('fa-minus');
+                            otherToggle.classList.add('fa-plus');
+                        }
+                    });
+                    
+                    // Toggle the clicked item
+                    if (!isActive) {
+                        item.classList.add('active');
+                        answer.style.display = 'block';
+                        toggle.classList.remove('fa-plus');
+                        toggle.classList.add('fa-minus');
+                    } else {
+                        item.classList.remove('active');
+                        answer.style.display = 'none';
+                        toggle.classList.remove('fa-minus');
+                        toggle.classList.add('fa-plus');
+                    }
+                });
+                
+                // Also make the toggle button clickable
+                const toggleBtn = item.querySelector('.faq-toggle');
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent triggering the parent click
+                        question.click();
+                    });
+                }
+            });
+            
+
+            // Function to activate a specific tab
+            function activateTab(tabId, preventScroll = false) {
+                if (isAnimating) return;
+                isAnimating = true;
+                
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === tabId) {
+                        content.style.display = 'block';
+                        void content.offsetWidth; // Force reflow
+                        content.classList.add('active');
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+                
+                // Set the active button
+                const activeButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                if (activeButton) {
+                    activeButton.classList.add('active');
+                }
+                
+                // Update URL hash without scrolling
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + tabId);
+                } else {
+                    window.location.hash = '#' + tabId;
+                }
+                
+                // Reset animation lock after transition
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 300);
+            }
+
+            // Set up tab click handlers
+            tabButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = button.getAttribute('data-tab');
+                    activateTab(tabId, true);
+                });
+            });
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', function(e) {
+                const tabId = window.location.hash.substring(1);
+                if (tabId && document.getElementById(tabId)) {
+                    activateTab(tabId, true);
+                }
+            });
+
+            // Check URL hash on page load
+            if (window.location.hash) {
+                const tabId = window.location.hash.substring(1);
+                const targetTab = document.getElementById(tabId);
+                const targetButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                
+                if (targetTab && targetButton) {
+                    // Show the tab immediately without animation on page load
+                    targetTab.style.display = 'block';
+                    targetTab.style.opacity = '1';
+                    targetButton.classList.add('active');
+                    return;
+                }
+            }
+
+            // Default to first tab if no hash or invalid hash
+            if (tabButtons.length > 0) {
+                const defaultTab = tabButtons[0].getAttribute('data-tab');
+                document.getElementById(defaultTab).style.display = 'block';
+                document.getElementById(defaultTab).style.opacity = '1';
+                tabButtons[0].classList.add('active');
+            }
+
+            // FAQ Accordion functionality is already handled at the top of the script
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.style.opacity = '1';
+                    backToTop.style.visibility = 'visible';
+                } else {
+                    backToTop.style.opacity = '0';
+                    backToTop.style.visibility = 'hidden';
+                }
+            });
+
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

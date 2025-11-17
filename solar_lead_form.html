@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy Savings | Demo Form Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/space-theme.css">
+    <style>
+        /* Space Theme Overrides for Solar Form */
+        :root {
+            --space-blue: #3b82f6;
+            --space-indigo: #6366f1;
+            --space-purple: #8b5cf6;
+            --space-yellow: #f59e0b;
+            --space-green: #10b981;
+            --space-teal: #14b8a6;
+            --space-white: #f8fafc;
+            --space-gray: #1e293b;
+            --space-dark: #0f172a;
+        }
+        
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: var(--space-white);
+            border-radius: 50%;
+            animation: twinkle var(--twinkle-duration) infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        /* Form Page Container */
+        .form-page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 900px) {
+            .form-page-container {
+                padding: 1rem;
+                max-width: 100%;
+                gap: 1.5rem;
+            }
+            
+            .form-container {
+                margin-bottom: 0;
+            }
+        }
+        
+        /* Form Container */
+        .form-container {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            margin: 0;
+            width: 100%;
+            position: relative;
+        }
+        
+        /* Form Header */
+        .form-header {
+            background: transparent;
+            color: white;
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--space-white);
+        }
+        
+        .form-header p {
+            margin: 0;
+            color: var(--space-gray-400);
+            font-size: 1rem;
+        }
+        
+        .form-header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Form Body */
+        .form-body {
+            padding: 2rem 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-col {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--space-white);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--space-white);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--space-teal);
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f8fafc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        
+        /* Weather Widget */
+        .weather-widget {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin: 0 0 2rem 0;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .weather-widget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), transparent);
+            z-index: 0;
+        }
+        
+        .weather-widget:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+        
+        .weather-widget i {
+            font-size: 3.5rem;
+            color: var(--space-yellow);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.7);
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+        
+        .weather-widget h3 {
+            color: var(--space-white);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .weather-info p {
+            color: var(--space-gray-light);
+            margin: 0.25rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .uv-index {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--space-yellow);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        /* Solar Savings */
+        .solar-savings {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .solar-savings::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
+            z-index: 0;
+        }
+        
+        .solar-savings h3 {
+            color: var(--space-white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .savings-amount {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--space-green);
+            margin: 1rem 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        .solar-savings p {
+            color: var(--space-gray-light);
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        /* Form Elements */
+        .form-body {
+            padding: 2rem 2.5rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-section h3 {
+            color: var(--space-white);
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .form-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--space-purple), var(--space-indigo));
+            border-radius: 2px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group:focus-within {
+            transform: translateY(-2px);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--space-white);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: var(--space-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--space-purple);
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f8fafc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
+        }
+        
+        /* Custom Checkbox and Radio */
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .checkbox-group input,
+        .radio-group input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            left: 0;
+            height: 1.5rem;
+            width: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--space-purple);
+            border-radius: 0.25rem;
+            transition: all 0.2s ease;
+        }
+        
+        .radio-group .checkmark {
+            border-radius: 50%;
+            border-color: var(--space-indigo);
+        }
+        
+        .checkbox-group:hover .checkmark {
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+        
+        .radio-group:hover .checkmark {
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        
+        .checkbox-group input:checked ~ .checkmark {
+            background-color: var(--space-purple);
+        }
+        
+        .radio-group input:checked ~ .checkmark {
+            background-color: var(--space-indigo);
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .checkbox-group input:checked ~ .checkmark:after,
+        .radio-group input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .checkbox-group .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .radio-group .checkmark:after {
+            top: 4px;
+            left: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .checkbox-group label,
+        .radio-group label {
+            margin-bottom: 0;
+            color: var(--space-white);
+            font-weight: normal;
+            font-size: 0.95rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--space-purple), var(--space-indigo));
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--space-green), var(--space-teal));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+        }
+        
+        .btn i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover i {
+            transform: translateX(4px);
+        }
+        
+        /* Form Footer */
+        .form-footer {
+            padding: 1.5rem 2.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .form-footer p {
+            color: var(--space-gray-light);
+            font-size: 0.9rem;
+            text-align: center;
+            margin: 0;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+        
+        .btn:hover {
+            background: var(--primary-light);
+        }
+        
+        .weather-widget {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .weather-widget i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .weather-info h3 {
+            margin: 0 0 0.25rem 0;
+        }
+        
+        .weather-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .weather-detail {
+            text-align: center;
+        }
+        
+        .weather-detail .value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .weather-detail .label {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-col {
+                margin-bottom: 1rem;
+            }
+            
+            .form-col:last-child {
+                margin-bottom: 0;
+            }
+        }
+        </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create stars background
+            function createStarsBackground() {
+                const starsContainer = document.createElement('div');
+                starsContainer.className = 'stars';
+                document.body.insertBefore(starsContainer, document.body.firstChild);
+
+                // Create stars
+                const starsCount = 200;
+                
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    
+                    // Random size between 1px and 3px
+                    const size = Math.random() * 2 + 1;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    
+                    // Random position
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    
+                    // Random twinkle duration between 2s and 5s
+                    const duration = Math.random() * 3 + 2;
+                    star.style.setProperty('--twinkle-duration', `${duration}s`);
+                    
+                    // Random delay for twinkling
+                    star.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    starsContainer.appendChild(star);
+                }
+
+                // Add parallax effect to stars
+                document.addEventListener('mousemove', function(e) {
+                    const x = e.clientX / window.innerWidth;
+                    const y = e.clientY / window.innerHeight;
+                    
+                    starsContainer.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+                });
+            }
+
+            // Initialize stars background
+            createStarsBackground();
+        });
+    </script>
+    </head>
+    <body>
+        <div class="form-page-container">
+        <div class="form-container">
+            <form id="solarForm" action="https://learn.leadspediatrack.com/post.do" method="GET" class="solar-form">
+                <!-- Required Hidden Fields for LeadsPedia (GET parameters) -->
+                <input type="hidden" name="campaign_id" value="686e91b7823d9">
+                <input type="hidden" name="lp_campaign_id" value="686e91b7823d9">
+                <input type="hidden" name="lp_campaign_key" value="xHTByjcZpQh93DKvMrm6">
+                <input type="hidden" name="lp_response" value="json">
+                <input type="hidden" name="lp_test" value="0">
+                <input type="hidden" name="ip_address" id="ip_address" value="">
+                <input type="hidden" name="sub_id" id="sub_id" value="">
+                <input type="hidden" name="lead_type" value="solar">
+                <input type="hidden" name="user_agent" id="user_agent">
+                <input type="hidden" name="source_url" id="source_url">
+                <input type="hidden" name="referrer" id="referrer">
+                <input type="hidden" name="services_needed" value="solar">
+                <input type="hidden" name="lp_s1" id="lp_s1" value="">
+                <input type="hidden" name="lp_s2" id="lp_s2" value="">
+                <input type="hidden" name="lp_s3" id="lp_s3" value="">
+                <input type="hidden" name="lp_s4" id="lp_s4" value="">
+                <input type="hidden" name="lp_s5" id="lp_s5" value="">
+                <!-- Additional Required Fields -->
+                <input type="hidden" name="submission_time" id="submission_time" value="">
+                <input type="hidden" name="submission_date" id="submission_date" value="">
+                <input type="hidden" name="http_referer" id="http_referer" value="">
+                
+                <div class="form-header">
+                    <h1>Find Out How Much You Can Save with Solar</h1>
+                    <p>Get a free, no-obligation quote from top solar providers in your area</p>
+                </div>
+                
+                <div class="form-body">
+                    <!-- Hidden Fields for Tracking -->
+                    <input type="hidden" name="lp_campaign_key" value="">
+                    
+                    <!-- Weather Widget -->
+                    <div class="weather-widget">
+                        <div class="weather-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">72°F</div>
+                            <div class="weather-location">Your Location</div>
+                            <div class="weather-desc">Sunny</div>
+                        </div>
+                        <div class="solar-message">
+                            <i class="fas fa-solar-panel"></i>
+                            <span>Great day for solar energy production!</span>
+                        </div>
+                    </div>
+                    
+                    <h2><i class="fas fa-user-astronaut"></i> Personal Information</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="first_name">First Name *</label>
+                            <input type="text" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="form-col">
+                            <label for="last_name">Last Name *</label>
+                            <input type="text" id="last_name" name="last_name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-col">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="date_of_birth">Date of Birth *</label>
+                            <input type="date" id="date_of_birth" name="date_of_birth" required>
+                        </div>
+                        <div class="form-col">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer_not_to_say">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <h2><i class="fas fa-home"></i> Property Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="address">Street Address *</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-col">
+                            <label for="state">State *</label>
+                            <select id="state" name="state" required>
+                                <option value="">Select State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <h2><i class="fas fa-solar-panel"></i> Solar Assessment</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="home_type">Home Type *</label>
+                            <select id="home_type" name="home_type" required>
+                                <option value="">Select Home Type</option>
+                                <option value="single_family">Single Family Home</option>
+                                <option value="multi_family">Multi-Family Home</option>
+                                <option value="townhouse">Townhouse</option>
+                                <option value="condo">Condo</option>
+                                <option value="mobile">Mobile Home</option>
+                                <option value="commercial">Commercial Property</option>
+                            </select>
+                        </div>
+                        <div class="form-col">
+                            <label for="roof_type">Roof Type</label>
+                            <select id="roof_type" name="roof_type">
+                                <option value="">Select Roof Type</option>
+                                <option value="asphalt_shingle">Asphalt Shingle</option>
+                                <option value="metal">Metal</option>
+                                <option value="tile">Tile</option>
+                                <option value="flat">Flat</option>
+                                <option value="other">Other</option>
+                                <option value="not_sure">Not Sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="roof_condition">Roof Condition</label>
+                            <select id="roof_condition" name="roof_condition">
+                                <option value="">Select Roof Condition</option>
+                                <option value="new">New (0-5 years)</option>
+                                <option value="good">Good (5-15 years)</option>
+                                <option value="fair">Fair (15-20 years)</option>
+                                <option value="poor">Poor (20+ years)</option>
+                                <option value="not_sure">Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-col">
+                            <label for="shade_level">Roof Shade Level</label>
+                            <select id="shade_level" name="shade_level">
+                                <option value="">Select Shade Level</option>
+                                <option value="full_sun">Full Sun (No Shade)</option>
+                                <option value="some_shade">Some Shade (Partial Day)</option>
+                                <option value="mostly_shady">Mostly Shady</option>
+                                <option value="not_sure">Not Sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="credit_score">Credit Score Range</label>
+                            <select id="credit_score" name="credit_score">
+                                <option value="">Select Credit Score</option>
+                                <option value="excellent">Excellent (720+)</option>
+                                <option value="good">Good (680-719)</option>
+                                <option value="fair">Fair (640-679)</option>
+                                <option value="poor">Poor (580-639)</option>
+                                <option value="not_sure">Not Sure / Prefer Not to Say</option>
+                            </select>
+                        </div>
+                        <div class="form-col">
+                            <label for="timeline">Planning Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Select Timeline</option>
+                                <option value="immediately">Immediately</option>
+                                <option value="1-3_months">1-3 Months</option>
+                                <option value="3-6_months">3-6 Months</option>
+                                <option value="6-12_months">6-12 Months</option>
+                                <option value="just_browsing">Just Browsing</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="zip_code">ZIP Code *</label>
+                            <input type="text" id="zip_code" name="zip_code" required>
+                        </div>
+                        <div class="form-col">
+                            <label for="electric_bill">Average Monthly Electric Bill *</label>
+                            <select id="electric_bill" name="electric_bill" required>
+                                <option value="">Select Amount</option>
+                                <option value="0-50">$0 - $50</option>
+                                <option value="51-100">$51 - $100</option>
+                                <option value="101-150">$101 - $150</option>
+                                <option value="151-200">$151 - $200</option>
+                                <option value="201-300">$201 - $300</option>
+                                <option value="301-400">$301 - $400</option>
+                                <option value="401-500">$401 - $500</option>
+                                <option value="500+">$500+</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Notes -->
+                    <div class="form-group">
+                        <label for="comments">Additional Notes</label>
+                        <textarea id="comments" name="comments" rows="3" placeholder="Please include any additional information about your solar needs..."></textarea>
+                    </div>
+                    
+                    <!-- Hidden Fields for Required Checkboxes -->
+                    <input type="hidden" name="homeowner" value="true">
+                    <input type="hidden" name="contact_me" value="true">
+                    <input type="hidden" name="terms" value="true">
+                    
+                    <p class="form-note">
+                            By submitting this form, you agree to receive marketing communications from us and our partners. 
+                            You can unsubscribe at any time. Your information is secure and will never be sold to third parties.
+                        </p>
+                    </div>
+                    
+                    <!-- Submit Button with Animation -->
+                    <div class="form-group submit-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <span class="btn-text">Get My Free Solar Quote</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Moved Powered by section here -->
+                    <div style="text-align: center; padding: 1.5rem 0; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p style="font-size: 0.8rem; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7);">Powered by</p>
+                        <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 45px; width: auto;">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize stars background
+            createStarsBackground();
+            
+            // Set user agent and source URL
+            document.getElementById('user_agent').value = navigator.userAgent;
+            document.getElementById('source_url').value = window.location.href;
+            document.getElementById('referrer').value = document.referrer || 'direct';
+            
+            // Get URL parameters for tracking
+            const urlParams = new URLSearchParams(window.location.search);
+            document.querySelector('input[name="lp_campaign_key"]').value = urlParams.get('lp_campaign_key') || '';
+            document.querySelector('input[name="lp_s1"]').value = urlParams.get('lp_s1') || '';
+            document.querySelector('input[name="lp_s2"]').value = urlParams.get('lp_s2') || '';
+            document.querySelector('input[name="lp_s3"]').value = urlParams.get('lp_s3') || '';
+            document.querySelector('input[name="lp_s4"]').value = urlParams.get('lp_s4') || '';
+            document.querySelector('input[name="lp_s5"]').value = urlParams.get('lp_s5') || '';
+            
+            // Get IP address
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip_address').value = data.ip;
+                })
+                .catch(() => {
+                    document.getElementById('ip_address').value = 'unknown';
+                });
+            const subId = urlParams.get('sub_id') || '';
+            document.getElementById('sub_id').value = subId;
+            
+            // Add animation to form elements on focus
+            const formInputs = document.querySelectorAll('input, select, textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                    this.parentElement.style.transition = 'all 0.3s ease';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Form submission
+            const form = document.getElementById('solarForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Basic validation
+                    let isValid = true;
+                    const requiredFields = form.querySelectorAll('[required]');
+
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.classList.add('error');
+                            
+                            // Scroll to first error
+                            if (isValid) {
+                                field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                        } else {
+                            field.classList.remove('error');
+                        }
+                    });
+
+                    if (!isValid) {
+                        alert('Please fill in all required fields');
+                        return false;
+                    }
+
+                    // Show loading state
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+                    // Field name mapping to match LeadsPedia parameters (GET format)
+                    const fieldMapping = {
+                        // Required Fields
+                        'first_name': 'firstname',
+                        'last_name': 'lastname',
+                        'email': 'email',
+                        'phone': 'phone1',
+                        'zip_code': 'zip',
+                        
+                        // Additional Fields
+                        'address': 'address',
+                        'city': 'city',
+                        'state': 'state',
+                        'home_type': 'hometype',
+                        'roof_type': 'rooftype',
+                        'roof_condition': 'roofcondition',
+                        'shade_level': 'roofshade',
+                        'credit_score': 'creditscore',
+                        'timeline': 'timeline',
+                        'date_of_birth': 'dob',
+                        'gender': 'gender',
+                        'electric_bill': 'electricbill',
+                        'home_owner': 'homeowner',
+                        'property_type': 'propertytype',
+                        'roof_shade': 'roofshade',
+                        'roof_pitch': 'roofpitch',
+                        'roof_material': 'roofmaterial',
+                        'roof_age': 'roofage',
+                        'utility_provider': 'utilityprovider',
+                        'credit_rating': 'creditrating',
+                        'time_frame': 'timeframe',
+                        'comments': 'comments',
+                        
+                        // System Fields (keep as is)
+                        'campaign_id': 'campaign_id',
+                        'lp_campaign_id': 'lp_campaign_id',
+                        'lp_campaign_key': 'lp_campaign_key',
+                        'lp_response': 'lp_response',
+                        'lp_test': 'lp_test',
+                        'ip_address': 'ip_address',
+                        'sub_id': 'sub_id',
+                        'lead_type': 'lead_type',
+                        'lp_s1': 'lp_s1',
+                        'lp_s2': 'lp_s2',
+                        'lp_s3': 'lp_s3',
+                        'lp_s4': 'lp_s4',
+                        'lp_s5': 'lp_s5',
+                        'user_agent': 'user_agent',
+                        'source_url': 'source_url',
+                        'referrer': 'referrer',
+                        'services_needed': 'services_needed',
+                        'submission_time': 'submission_time',
+                        'submission_date': 'submission_date',
+                        'http_referer': 'http_referer'
+                    };
+                    
+                    // Get form data and map field names
+                    const formData = new FormData(this);
+                    const params = new URLSearchParams();
+                    
+                    // Add timestamp and date
+                    const now = new Date();
+                    params.append('submission_time', now.toISOString().split('T')[1].split('.')[0]);
+                    params.append('submission_date', now.toISOString().split('T')[0]);
+                    
+                    // Set the hidden fields for tracking
+                    document.getElementById('submission_time').value = now.toISOString().split('T')[1].split('.')[0];
+                    document.getElementById('submission_date').value = now.toISOString().split('T')[0];
+                    document.getElementById('http_referer').value = document.referrer || 'direct';
+                    
+                    // Log form data for debugging (without sensitive fields)
+                    const logData = {};
+                    formData.forEach((value, key) => {
+                        // Don't log sensitive fields
+                        if (!key.includes('key') && !key.includes('token') && !key.includes('password')) {
+                            logData[key] = value;
+                        }
+                    });
+                    console.log('Submitting form data:', logData);
+                    
+                    // Build the final URL with all parameters
+                    const endpoint = 'https://learn.leadspediatrack.com/post.do';
+                    const url = `${endpoint}?${params.toString()}`;
+                    
+                    // For testing: log the final URL (without sensitive data)
+                    console.log('Submitting to URL:', url.split('?')[0] + '?' + 
+                        Array.from(params.entries())
+                            .filter(([key]) => !key.includes('key') && !key.includes('token') && !key.includes('password'))
+                            .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+                            .join('&'));
+                    
+                    // Submit using GET with URL parameters
+                    fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        mode: 'cors',
+                        credentials: 'omit'
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Lead submission response:', data);
+                        
+                        // Check for success based on LeadsPedia response structure
+                        if (data && (data.status === 'success' || data.success)) {
+                            // Show success message
+                            alert('Thank you! Your solar inquiry has been submitted. We will contact you shortly.');
+                            
+                            // Redirect to thank you page if provided in response
+                            if (data.redirect_url) {
+                                window.location.href = data.redirect_url;
+                                return;
+                            }
+                            
+                            // Reset form
+                            this.reset();
+                            
+                            // Scroll to top
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                            // Handle error from LeadsPedia
+                            const errorMessage = data.message || data.error || 'Submission failed. Please try again.';
+                            throw new Error(errorMessage);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert(`There was an error submitting your request: ${error.message}`);
+                    })
+                    .finally(() => {
+                        // Reset button state
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                        }
+                    });
+                    
+                    return false;
+                });
+            }
+            
+            // Create stars background effect
+            function createStarsBackground() {
+                const starsContainer = document.createElement('div');
+                starsContainer.className = 'stars-bg';
+                starsContainer.style.position = 'fixed';
+                starsContainer.style.top = '0';
+                starsContainer.style.left = '0';
+                starsContainer.style.width = '100%';
+                starsContainer.style.height = '100%';
+                starsContainer.style.zIndex = '-1';
+                starsContainer.style.overflow = 'hidden';
+                starsContainer.style.pointerEvents = 'none';
+                
+                // Create stars
+                const starsCount = 150;
+                for (let i = 0; i <starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.style.position = 'absolute';
+                    star.style.width = Math.random() * 3 + 'px';
+                    star.style.height = star.style.width;
+                    star.style.background = '#fff';
+                    star.style.borderRadius = '50%';
+                    star.style.opacity = Math.random();
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.animation = `twinkle ${Math.random() * 5 + 3}s infinite ${Math.random() * 2}s`;
+                    starsContainer.appendChild(star);
+                }
+                
+                document.body.appendChild(starsContainer);
+                
+                // Add twinkle animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes twinkle {
+                        0%, 100% { opacity: 0.2; transform: scale(1); }
+                        50% { opacity: 1; transform: scale(1.5); }
+                    }
+                    
+                    .stars-bg::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+                        z-index: -1;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Add parallax effect to stars on mouse move
+            document.addEventListener('mousemove', function(e) {
+                const stars = document.querySelectorAll('.stars-bg > div');
+                const mouseX = e.clientX / window.innerWidth - 0.5;
+                const mouseY = e.clientY / window.innerHeight - 0.5;
+                
+                stars.forEach((star, index) => {
+                    const speed = (index % 3 + 1) * 0.5;
+                    const xPos = (mouseX * 30 * speed) + 'px';
+                    const yPos = (mouseY * 30 * speed) + 'px';
+                    star.style.transform = `translate(${xPos}, ${yPos})`;
+                });
+            });
+            
+            // Simulate weather data with animation
+            function updateWeatherData() {
+                const weatherData = {
+                    temperature: Math.floor(Math.random() * 15) + 70, // 70-85°F
+                    condition: 'Sunny',
+                    uvIndex: Math.floor(Math.random() * 3) + 8, // 8-10 UV Index
+                    solarProduction: Math.floor(Math.random() * 20) + 80 // 80-100% of max
+                };
+                
+                // Animate the temperature change
+                const tempElement = document.getElementById('weatherTemp');
+                if (tempElement) {
+                    tempElement.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        tempElement.textContent = weatherData.temperature + '°F';
+                        tempElement.style.transform = 'scale(1)';
+                    }, 200);
+                }
+                
+                // Update other weather info
+                const conditionElement = document.getElementById('weatherCondition');
+                const uvElement = document.getElementById('uvIndex');
+                const productionElement = document.getElementById('solarProduction');
+                
+                if (conditionElement) conditionElement.textContent = weatherData.condition;
+                if (uvElement) uvElement.textContent = 'UV Index: ' + weatherData.uvIndex;
+                if (productionElement) productionElement.textContent = 'Solar Production: ' + weatherData.solarProduction + '% of max';
+                
+                // Update UV index color based on value
+                if (uvElement) {
+                    uvElement.className = 'uv-index';
+                    if (weatherData.uvIndex >= 9) {
+                        uvElement.style.backgroundColor = 'rgba(220, 38, 38, 0.2)';
+                        uvElement.style.borderColor = 'rgba(220, 38, 38, 0.5)';
+                        uvElement.style.color = '#fecaca';
+                    } else if (weatherData.uvIndex >= 6) {
+                        uvElement.style.backgroundColor = 'rgba(245, 158, 11, 0.2)';
+                        uvElement.style.borderColor = 'rgba(245, 158, 11, 0.5)';
+                        uvElement.style.color = '#fde68a';
+                    } else {
+                        uvElement.style.backgroundColor = 'rgba(16, 185, 129, 0.2)';
+                        uvElement.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+                        uvElement.style.color = '#6ee7b7';
+                    }
+                }
+                
+                // Update solar production indicator
+                if (productionElement) {
+                    const productionLevel = weatherData.solarProduction / 100;
+                    const hue = 120 * productionLevel; // Green to red based on production
+                    productionElement.style.background = `hsla(${hue}, 80%, 45%, 0.2)`;
+                    productionElement.style.borderColor = `hsla(${hue}, 80%, 45%, 0.5)`;
+                    productionElement.style.color = `hsl(${hue}, 80%, 75%)`;
+                }
+                
+                // Schedule next update (every 5 minutes)
+                setTimeout(updateWeatherData, 300000);
+            }
+            
+            // Initialize weather data with user's location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        fetchWeatherData(latitude, longitude);
+                    },
+                    (error) => {
+                        console.error('Error getting location:', error);
+                        // Default to New York if location access is denied
+                        fetchWeatherData(40.7128, -74.0060);
+                    }
+                );
+            } else {
+                // Default to New York if geolocation is not supported
+                fetchWeatherData(40.7128, -74.0060);
+            }
+            
+            // Function to fetch weather data from OpenWeather API
+            async function fetchWeatherData(lat, lon) {
+                const apiKey = 'b55ed0762d1c5f2b26a9d6b3d7e6e277';
+                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+                
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    
+                    if (data.cod === 200) {
+                        updateWeatherUI(data);
+                    } else {
+                        console.error('Error fetching weather data:', data.message);
+                        updateWeatherData(); // Fallback to simulated data
+                    }
+                } catch (error) {
+                    console.error('Error fetching weather data:', error);
+                    updateWeatherData(); // Fallback to simulated data
+                }
+            }
+            
+            // Update UI with real weather data
+            function updateWeatherUI(weatherData) {
+                const weatherWidget = document.getElementById('weatherWidget');
+                const weatherIcon = weatherWidget.querySelector('i');
+                const weatherInfo = weatherWidget.querySelector('.weather-info');
+                const locationName = weatherData.name;
+                const temp = Math.round(weatherData.main.temp);
+                const condition = weatherData.weather[0].main;
+                const humidity = weatherData.main.humidity;
+                const windSpeed = Math.round(weatherData.wind.speed);
+                const cloudiness = weatherData.clouds?.all || 0;
+                
+                // Set weather icon based on condition
+                const weatherIcons = {
+                    'Clear': 'fa-sun',
+                    'Clouds': 'fa-cloud',
+                    'Rain': 'fa-cloud-rain',
+                    'Drizzle': 'fa-cloud-rain',
+                    'Thunderstorm': 'fa-bolt',
+                    'Snow': 'fa-snowflake',
+                    'Mist': 'fa-smog',
+                    'Smoke': 'fa-smog',
+                    'Haze': 'fa-smog',
+                    'Dust': 'fa-smog',
+                    'Fog': 'fa-smog',
+                    'Sand': 'fa-smog',
+                    'Ash': 'fa-smog',
+                    'Squall': 'fa-wind',
+                    'Tornado': 'fa-tornado'
+                };
+                
+                const iconClass = weatherIcons[condition] || 'fa-sun';
+                weatherIcon.className = `fas ${iconClass} weather-icon`;
+                
+                // Calculate solar potential
+                const isDaytime = weatherData.weather[0].icon.includes('d');
+                const solarMessage = getSolarMessage(isDaytime, cloudiness);
+                const uvIndex = isDaytime ? Math.round((weatherData.main.temp - 32) * 5/9 / 2) : 0; // Simple UV index estimation
+                const sunHours = isDaytime ? (5.2 * (1 - (cloudiness / 200))).toFixed(1) : '0.0';
+                
+                // Update weather info with proper structure
+                weatherInfo.innerHTML = `
+                    <h3>${locationName}</h3>
+                    <p>${temp}°F | ${condition}</p>
+                    <p>${solarMessage}</p>
+                `;
+                
+                // Update weather details
+                const weatherDetails = weatherWidget.querySelector('.weather-details');
+                if (weatherDetails) {
+                    weatherDetails.innerHTML = `
+                        <div class="weather-detail">
+                            <div class="value" id="uvIndex">${uvIndex}</div>
+                            <div class="label">UV Index</div>
+                        </div>
+                        <div class="weather-detail">
+                            <div class="value" id="sunHours">${sunHours}h</div>
+                            <div class="label">Sun Hours</div>
+                        </div>
+                    `;
+                }
+            }
+            
+            function getSolarMessage(isDaytime, cloudiness) {
+                if (!isDaytime) return 'Check back during daylight hours for solar potential';
+                if (cloudiness < 20) return 'Excellent solar production today!';
+                if (cloudiness < 50) return 'Good solar production expected';
+                if (cloudiness < 80) return 'Moderate solar production';
+                return 'Lower solar production due to clouds';
+            }
+            
+            // This function is no longer needed as we've integrated the logic into updateWeatherUI
+            
+            // Add floating animation to weather widget
+            const weatherWidget = document.querySelector('.weather-widget');
+            if (weatherWidget) {
+                weatherWidget.classList.add('floating');
+            }
+        });
+    </script>
+    
+    <footer style="text-align: center; padding: 0.5rem 0 1rem; color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; margin-top: 1rem;">
+        <p style="margin-bottom: 0.5rem;">2025 Breakfast Club Publishing. All rights reserved.</p>
+    </footer>
+</body>
+</html>

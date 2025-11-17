@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="400" fill="#F8FAFC"/>
+    
+    <!-- Title -->
+    <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1E3A8A">How LeadsPedia Works</text>
+    
+    <!-- Process Steps -->
+    <g transform="translate(100, 100)">
+        <!-- Step 1: Lead Generation -->
+        <g class="step" transform="translate(0, 0)">
+            <circle cx="50" cy="50" r="40" fill="#3B82F6" fill-opacity="0.1" stroke="#3B82F6" stroke-width="2"/>
+            <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1E3A8A">1</text>
+            <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDY0IDQ0OEg0OEMyMS41IDQ0OCAwIDQyNi41IDAgNDAwVjExMmMwLTI2LjUgMjEuNS00OCA0OC00OGg0OGM4LjggMCAxNiA3LjIgMTYgMTZzLTcuMiAxNi0xNiAxNkg0OHMtMTYgNy4yLTE2IDE2djI4OHM3LjIgMTYgMTYgMTZoNDE2YzguOCAwIDE2LTcuMiAxNi0xNnYtNDhjMC04LjgtNy4yLTE2LTE2LTE2em0tMzM2LTY0aDY0YzguOCAwIDE2LTcuMiAxNi0xNnYtOTZjMC04LjgtNy4yLTE2LTE2LTE2aC02NGMtOC44IDAtMTYgNy4yLTE2IDE2djk2YzAgOC44IDcuMiAxNiAxNiAxNnptOTYtMTYwaDY0YzguOCAwIDE2LTcuMiAxNi0xNnYtOTZjMC04LjgtNy4yLTE2LTE2LTE2aC02NGMtOC44IDAtMTYgNy4yLTE2IDE2djk2YzAgOC44IDcuMiAxNiAxNiAxNnptOTYgODBoNjRjOC44IDAgMTYtNy4yIDE2LTE2di05NmMwLTguOC03LjItMTYtMTYtMTZoLTY0Yy04LjggMC0xNiA3LjItMTYgMTZ2OTZjMCA4LjggNy4yIDE2IDE2IDE2em05Ni0xNjBoNjRjOC44IDAgMTYtNy4yIDE2LTE2di05NmMwLTguOC03LjItMTYtMTYtMTZoLTY0Yy04LjggMC0xNiA3LjItMTYgMTZ2OTZjMCA4LjggNy4yIDE2IDE2IDE2eiIgZmlsbD0iM0I4MkY2Ii8+PC9zdmc+" x="30" y="40" width="40" height="40"/>
+            <text x="50" y="120" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#4B5563">Lead Generation</text>
+            <text x="50" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#6B7280">Web Forms, APIs, Calls</text>
+        </g>
+        
+        <!-- Arrow -->
+        <path d="M150 70 L180 70" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5,5"/>
+        <polygon points="180,70 170,65 170,75" fill="#9CA3AF"/>
+        
+        <!-- Step 2: Lead Validation -->
+        <g class="step" transform="translate(200, 0)">
+            <circle cx="50" cy="50" r="40" fill="#10B981" fill-opacity="0.1" stroke="#10B981" stroke-width="2"/>
+            <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#065F46">2</text>
+            <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDc0LjcgMTg5LjdjMS44LTIuMSAyLjktNC44IDI45LTcuNnYtMi41YzAtNS44LTQuNy0xMC41LTEwLjUtMTAuNUg0MzhjLTIuOCAwLTUuNSAxLjEtNy42IDIuOUwyMjUuOCAzNDguMiA4OC4xIDIwMC4xYy0yLjItMi41LTUuNC00LTEwLjItN0g0NWMtNS44IDAtMTAuNSA0LjctMTAuNSAxMC41djIuNWMwIDIuOCAxLjEgNS41IDIuOSA3LjRsMTg5LjUgMjE0LjJjMy44IDQuMyA5LjkgNC4zIDEzLjcgMGwyMzQuMi0yNjMuMnoiIGZpbGw9IiMxMEI5ODEiLz48L3N2Zz4=" x="30" y="40" width="40" height="40"/>
+            <text x="50" y="120" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#4B5563">Lead Validation</text>
+            <text x="50" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#6B7280">Real-time Verification</text>
+        </g>
+        
+        <!-- Arrow -->
+        <path d="M350 70 L380 70" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5,5"/>
+        <polygon points="380,70 370,65 370,75" fill="#9CA3AF"/>
+        
+        <!-- Step 3: Distribution -->
+        <g class="step" transform="translate(400, 0)">
+            <circle cx="50" cy="50" r="40" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-width="2"/>
+            <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#92400E">3</text>
+            <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBk=" x="30" y="40" width="40" height="40"/>
+            <text x="50" y="120" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#4B5563">Lead Distribution</text>
+            <text x="50" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#6B7280">Smart Routing</text>
+        </g>
+        
+        <!-- Arrow -->
+        <path d="M550 70 L580 70" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5,5"/>
+        <polygon points="580,70 570,65 570,75" fill="#9CA3AF"/>
+        
+        <!-- Step 4: Analytics -->
+        <g class="step" transform="translate(600, 0)">
+            <circle cx="50" cy="50" r="40" fill="#8B5CF6" fill-opacity="0.1" stroke="#8B5CF6" stroke-width="2"/>
+            <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#5B21B6">4</text>
+            <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgNTEyIDUxMiI+PHBhdGggZD0iTTI1NiA4QzExOS4wNDMgOCA4IDExOS4wODMgOCAyNTZjMCAxMzYuOTk3IDExMS4wNDMgMjQ4IDI0OCAyNDhzMjQ4LTExMS4wNDMgMjQ4LTI0OEM1MDQgMTE5LjA4MyAzOTIuOTU3IDggMjU2IDh6TTI1NiA0NDhjLTEwNi4wMzkgMC0xOTItODUuOTYyLTE5Mi0xOTJTMTQ5Ljk2IDY0IDI1NiA2NHMxOTIgODUuOTYyIDE5MiAxOTItODUuOTYxIDE5Mi0xOTIgMTkyem0xNi0xMjhoOTZjOC44MzcgMCAxNi03LjE2MyAxNi0xNnYtMzJjMC04LjgzNy03LjE2My0xNi0xNi0xNkgxNjBjLTguODM3IDAtMTYgNy4xNjMtMTYgMTZ2MzJjMCA4LjgzNyA3LjE2MyAxNiAxNiAxNmgxMTJ6bTAtMTYwaDk2YzguODM3IDAgMTYtNy4xNjMgMTYtMTZ2LTMyYzAtOC44MzctNy4xNjMtMTYtMTYtMTZIMTYwYy04LjgzNyAwLTE2IDcuMTYzLTE2IDE2djMyYzAgOC44MzcgNy4xNjMgMTYgMTYgMTZoMTEyem0wIDgwaDk2YzguODM3IDAgMTYtNy4xNjMgMTYtMTZ2LTMyYzAtOC44MzctNy4xNjMtMTYtMTYtMTZIMTYwYy04LjgzNyAwLTE2IDcuMTYzLTE2IDE2djMyYzAgOC44MzcgNy4xNjMgMTYgMTYgMTZoMTEyeiIgZmlsbD0iOEI1Q0Y2Ii8+PC9zdmc+" x="30" y="40" width="40" height="40"/>
+            <text x="50" y="120" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#4B5563">Analytics</text>
+            <text x="50" y="140" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#6B7280">Real-time Reporting</text>
+        </g>
+    </g>
+    
+    <!-- Bottom Section -->
+    <g transform="translate(50, 200)">
+        <rect x="0" y="0" width="700" height="150" rx="8" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="1"/>
+        <text x="350" y="40" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#1F2937">Why Choose LeadsPedia?</text>
+        
+        <!-- Benefits -->
+        <g transform="translate(50, 70)">
+            <!-- Benefit 1 -->
+            <g transform="translate(0, 0)">
+                <circle cx="15" cy="15" r="10" fill="#3B82F6" fill-opacity="0.1"/>
+                <text x="35" y="20" font-family="Arial, sans-serif" font-size="14" fill="#1F2937">Real-time Lead Processing</text>
+            </g>
+            
+            <!-- Benefit 2 -->
+            <g transform="translate(300, 0)">
+                <circle cx="15" cy="15" r="10" fill="#10B981" fill-opacity="0.1"/>
+                <text x="35" y="20" font-family="Arial, sans-serif" font-size="14" fill="#1F2937">Advanced Fraud Detection</text>
+            </g>
+            
+            <!-- Benefit 3 -->
+            <g transform="translate(0, 40)">
+                <circle cx="15" cy="15" r="10" fill="#F59E0B" fill-opacity="0.1"/>
+                <text x="35" y="20" font-family="Arial, sans-serif" font-size="14" fill="#1F2937">Smart Lead Distribution</text>
+            </g>
+            
+            <!-- Benefit 4 -->
+            <g transform="translate(300, 40)">
+                <circle cx="15" cy="15" r="10" fill="#8B5CF6" fill-opacity="0.1"/>
+                <text x="35" y="20" font-family="Arial, sans-serif" font-size="14" fill="#1F2937">Comprehensive Analytics</text>
+            </g>
+            
+            <!-- Benefit 5 -->
+            <g transform="translate(0, 80)">
+                <circle cx="15" cy="15" r="10" fill="#EC4899" fill-opacity="0.1"/>
+                <text x="35" y="20" font-family="Arial, sans-serif" font-size="14" fill="#1F2937">Seamless Integrations</text>
+            </g>
+            
+            <!-- Benefit 6 -->
+            <g transform="translate(300, 80)">
+                <circle cx="15" cy="15" r="10" fill="#6366F1" fill-opacity="0.1"/>
+                <text x="35" y="20" font-family="Arial, sans-serif" font-size="14" fill="#1F2937">24/7 Support</text>
+            </g>
+        </g>
+    </g>
+    
+    <!-- Footer -->
+    <text x="400" y="390" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#6B7280">LeadsPedia - The Complete Lead Management Solution</text>
+</svg>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Request | LeadsPedia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/space-theme.css">
+    <style>
+        /* LeadsPedia Theme Variables */
+        :root {
+            --leads-blue: #1a56a6;      /* Primary LeadsPedia blue */
+            --leads-blue-light: #2b6cb0; /* Lighter variant for hovers */
+            --leads-blue-dark: #1e429f;  /* Darker variant for active states */
+            --leads-accent: #4299e1;     /* Accent color for highlights */
+            --leads-white: #ffffff;
+            --leads-light: #f8fafc;
+            --leads-gray: #e2e8f0;
+            --leads-dark: #1a202c;
+        }
+        
+        /* Space Theme Styles */
+        body.space-theme {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--leads-white);
+            background: var(--leads-blue);
+            background: linear-gradient(135deg, #0f1a2e, #1a365d);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            position: relative;
+            margin: 0;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: rgba(26, 86, 166, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-header {
+            background: var(--leads-blue);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-header h2 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container {
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container img {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        .form-card {
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -0.75rem 1.5rem;
+        }
+        
+        .form-col {
+            flex: 1 0 0%;
+            padding: 0 0.75rem;
+            min-width: 0;
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--leads-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 86, 166, 0.5);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+            background: var(--leads-blue);
+            color: white;
+            width: 100%;
+            margin-top: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(90deg, #7c3aed, #4f46e5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn i {
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .btn:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            display: none;
+        }
+        
+        .success-message h2 {
+            color: var(--space-green);
+            margin: 1rem 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .success-message h2:before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .success-message p {
+            color: #e2e8f0;
+            margin: 1.5rem auto 2rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .required:after {
+            content: " *";
+            color: #f87171;
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-col {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* Space Background Elements */
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="space-theme">
+    <!-- Space Background -->
+    <div id="stars-container"></div>
+    <div class="form-container">
+        <div class="form-header" style="background: transparent; padding: 1.5rem 2rem; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+            <h2 style="margin: 0 0 0.5rem 0; color: var(--space-white);">Demo Request</h2>
+            <p style="margin: 0; color: rgba(255, 255, 255, 0.8);">Get started with your LeadsPedia demo</p>
+        </div>
+        <div class="form-card">
+        
+        <form id="demoForm" class="form-body" action="https://learn.leadspediatrack.com/post.do" method="POST">
+            <!-- Hidden Fields for Leadspedia -->
+            <input type="hidden" name="lp_campaign_id" value="68f7de64176f3">
+            <input type="hidden" name="lp_campaign_key" value="ZCmPKRDHbyLnkMTj4cvp">
+            <input type="hidden" name="lp_response" value="json">
+            <input type="hidden" name="lp_test" value="0">
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="first_name" class="required">First Name</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                </div>
+                <div class="form-col">
+                    <label for="last_name" class="required">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="email_address" class="required">Email</label>
+                    <input type="email" id="email_address" name="email_address" required>
+                </div>
+                <div class="form-col">
+                    <label for="phone_home" class="required">Phone</label>
+                    <input type="tel" id="phone_home" name="phone_home" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="leads_calls_both" class="required">Leads, Calls, or Both?</label>
+                <select id="leads_calls_both" name="leads_calls_both" required>
+                    <option value="">Select Option</option>
+                    <option value="Both">Both</option>
+                    <option value="Calls">Calls</option>
+                    <option value="Leads">Leads</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="vertical" class="required">Vertical</label>
+                <select id="vertical" name="vertical" required>
+                    <option value="">Select Vertical</option>
+                    <option value="Debt">Debt</option>
+                    <option value="Education">Education</option>
+                    <option value="Home Services">Home Services</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="Other">Other</option>
+                    <option value="Solar">Solar</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="buy_sell_both" class="required">Buy, Sell, or Both?</label>
+                <select id="buy_sell_both" name="buy_sell_both" required>
+                    <option value="">Select Option</option>
+                    <option value="Both">Both</option>
+                    <option value="Buy">Buy</option>
+                    <option value="Sell">Sell</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="company_name" class="required">Company Name</label>
+                    <input type="text" id="company_name" name="company_name" required>
+                </div>
+                <div class="form-col">
+                    <label for="company_website" class="required">Company Website</label>
+                    <input type="text" id="company_website" name="company_website" placeholder="https://example.com" required>
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 2rem;">
+                <button type="submit" class="btn" id="submitBtn">Request Demo</button>
+                
+                <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7);">Powered by</p>
+                    <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 25px; width: auto;">
+                </div>
+                
+                <p style="font-size: 0.7rem; color: rgba(255, 255, 255, 0.5); margin-top: 1rem; text-align: center; line-height: 1.4;">
+                    By submitting, you agree to our <a href="#" style="color: #8b5cf6; text-decoration: none;">Terms</a> and 
+                    <a href="#" style="color: #8b5cf6; text-decoration: none;">Privacy Policy</a>. You consent to be contacted about demo opportunities.
+                </p>
+            </div>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            <div style="margin-bottom: 2rem;">
+                <img src="leadspedia-logo.png" alt="LeadsPedia" style="height: 60px; width: auto; margin-bottom: 1rem;">
+            </div>
+            <h2>Thank you for submitting your lead!</h2>
+            <p>A LeadsPedia associate will be with you shortly.</p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="index.html" style="display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; background: linear-gradient(90deg, var(--space-purple), var(--space-indigo)); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600; transition: all 0.2s ease;">
+                    <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                    Back to Forms
+                </a>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <footer style="text-align: center; padding: 1.5rem 0; color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+        <p>2025 Breakfast Club Publishing. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Create space background
+        function createSpaceBackground() {
+            const container = document.getElementById('stars-container');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size between 1-3px
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                
+                // Random opacity
+                star.style.opacity = Math.random() * 0.5 + 0.2;
+                
+                container.appendChild(star);
+            }
+        }
+        
+        // Initialize space background when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createSpaceBackground();
+            
+            // Force scroll to top when page loads
+            window.scrollTo(0, 0);
+            
+            // Add a small delay and scroll again to ensure it sticks
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+        
+        // Also run on window load
+        window.onload = function() {
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('demoForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Always prevent default to handle response
+                
+                // Simple validation
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = '#f87171';
+                        isValid = false;
+                    } else {
+                        field.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    }
+                });
+                
+                if (isValid) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Submitting...';
+                    
+                    // Get form data
+                    const formData = new FormData(form);
+                    const formBody = new URLSearchParams(formData).toString();
+                    
+                    // Log the data being sent (for debugging)
+                    console.log('Submitting form data:', Object.fromEntries(formData.entries()));
+                    
+                    // Submit to LeadsPedia and handle response
+                    fetch('https://learn.leadspediatrack.com/post.do', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formBody
+                    })
+                    .then(response => response.text())
+                    .then(responseText => {
+                        console.log('LeadsPedia response:', responseText);
+                        
+                        let result, message;
+                        
+                        try {
+                            // Try to parse as JSON first
+                            const jsonResponse = JSON.parse(responseText);
+                            result = jsonResponse.result;
+                            message = jsonResponse.msg;
+                        } catch (e) {
+                            // If JSON parsing fails, try XML
+                            const parser = new DOMParser();
+                            const xmlDoc = parser.parseFromString(responseText, 'text/xml');
+                            result = xmlDoc.querySelector('result')?.textContent;
+                            message = xmlDoc.querySelector('msg')?.textContent;
+                        }
+                        
+                        if (result === 'success') {
+                            // Show success message
+                            form.style.display = 'none';
+                            successMessage.style.display = 'block';
+                            successMessage.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            // Handle error
+                            console.error('Lead submission failed:', message);
+                            alert('There was an error submitting your information. Please try again.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Request Demo';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error. Please try again.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Request Demo';
+                    });
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+            
+            // Clear error styling on input
+            form.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('input', function() {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
