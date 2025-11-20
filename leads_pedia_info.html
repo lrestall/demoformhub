@@ -1579,97 +1579,401 @@
                     </div>
                 </section>
                 
-                <div class="mt-12">
-                    <h3 class="text-2xl font-bold text-white mb-8 text-center">Your Path to Success</h3>
-                    <p class="text-gray-300 text-center mb-10 max-w-2xl mx-auto">We're with you every step of the way, from initial setup to full optimization of your lead management system.</p>
+                <div class="mt-16">
+                    <div class="text-center max-w-4xl mx-auto mb-12">
+                        <h3 class="text-3xl font-bold text-white mb-4">Your Path to Success</h3>
+                        <p class="text-gray-300 text-lg">A streamlined onboarding journey designed for your success with LeadsPedia</p>
+                    </div>
                     
-                    <div class="relative max-w-5xl mx-auto">
-                        <!-- Connecting line -->
-                        <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 transform -translate-x-1/2 z-0"></div>
+                    <div class="workflow-container relative max-w-6xl mx-auto">
+                        <!-- Main workflow path -->
+                        <div class="workflow-path">
+                            <div class="path-line"></div>
+                            <div class="path-line path-line-2"></div>
+                            <div class="path-line path-line-3"></div>
+                            <div class="path-line path-line-4"></div>
+                        </div>
                         
-                        <!-- Timeline items -->
-                        <div class="relative z-10 space-y-16">
-                            <!-- Step 1 -->
-                            <div class="relative flex items-center justify-between">
-                                <div class="w-5/12 text-right pr-10">
-                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
-                                        <h4 class="text-lg font-semibold text-white mb-2">01. Discovery & Planning</h4>
-                                        <p class="text-gray-300 text-sm">We'll start with a comprehensive discovery session to understand your business goals, requirements, and technical environment.</p>
-                                    </div>
+                        <!-- Workflow nodes -->
+                        <div class="workflow-nodes">
+                            <!-- Node 1 -->
+                            <div class="workflow-node node-1" data-step="1">
+                                <div class="node-icon">
+                                    <i class="fas fa-search"></i>
                                 </div>
-                                <div class="w-2/12 flex justify-center">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
-                                        <i class="fas fa-search"></i>
-                                    </div>
+                                <div class="node-content">
+                                    <h4>Discovery & Planning</h4>
+                                    <p>Comprehensive analysis of your business goals and technical requirements</p>
                                 </div>
-                                <div class="w-5/12"></div>
+                                <div class="node-connector"></div>
+                                <div class="node-badge">1</div>
                             </div>
                             
-                            <!-- Step 2 -->
-                            <div class="relative flex items-center justify-between">
-                                <div class="w-5/12"></div>
-                                <div class="w-2/12 flex justify-center">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
-                                        <i class="fas fa-cogs"></i>
-                                    </div>
+                            <!-- Node 2 -->
+                            <div class="workflow-node node-2" data-step="2">
+                                <div class="node-icon">
+                                    <i class="fas fa-cogs"></i>
                                 </div>
-                                <div class="w-5/12 text-left pl-10">
-                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
-                                        <h4 class="text-lg font-semibold text-white mb-2">02. System Configuration</h4>
-                                        <p class="text-gray-300 text-sm">Our experts will customize and configure the platform to match your specific business processes and requirements.</p>
-                                    </div>
+                                <div class="node-content">
+                                    <h4>System Configuration</h4>
+                                    <p>Custom setup tailored to your business processes and workflows</p>
                                 </div>
+                                <div class="node-connector"></div>
+                                <div class="node-badge">2</div>
                             </div>
                             
-                            <!-- Step 3 -->
-                            <div class="relative flex items-center justify-between">
-                                <div class="w-5/12 text-right pr-10">
-                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
-                                        <h4 class="text-lg font-semibold text-white mb-2">03. Integration & Testing</h4>
-                                        <p class="text-gray-300 text-sm">We'll integrate with your existing systems and conduct thorough testing to ensure everything works seamlessly.</p>
-                                    </div>
+                            <!-- Node 3 -->
+                            <div class="workflow-node node-3" data-step="3">
+                                <div class="node-icon">
+                                    <i class="fas fa-plug"></i>
                                 </div>
-                                <div class="w-2/12 flex justify-center">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-yellow-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
-                                        <i class="fas fa-plug"></i>
-                                    </div>
+                                <div class="node-content">
+                                    <h4>Integration & Testing</h4>
+                                    <p>Seamless connection with your existing systems and thorough validation</p>
                                 </div>
-                                <div class="w-5/12"></div>
+                                <div class="node-connector"></div>
+                                <div class="node-badge">3</div>
                             </div>
                             
-                            <!-- Step 4 -->
-                            <div class="relative flex items-center justify-between">
-                                <div class="w-5/12"></div>
-                                <div class="w-2/12 flex justify-center">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-green-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </div>
+                            <!-- Node 4 -->
+                            <div class="workflow-node node-4" data-step="4">
+                                <div class="node-icon">
+                                    <i class="fas fa-graduation-cap"></i>
                                 </div>
-                                <div class="w-5/12 text-left pl-10">
-                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
-                                        <h4 class="text-lg font-semibold text-white mb-2">04. Training & Handover</h4>
-                                        <p class="text-gray-300 text-sm">Your team will receive comprehensive training and documentation to ensure a smooth transition.</p>
-                                    </div>
+                                <div class="node-content">
+                                    <h4>Training & Handover</h4>
+                                    <p>Comprehensive training and knowledge transfer to your team</p>
                                 </div>
+                                <div class="node-connector"></div>
+                                <div class="node-badge">4</div>
                             </div>
                             
-                            <!-- Step 5 -->
-                            <div class="relative flex items-center justify-between">
-                                <div class="w-5/12 text-right pr-10">
-                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
-                                        <h4 class="text-lg font-semibold text-white mb-2">05. Go Live & Support</h4>
-                                        <p class="text-gray-300 text-sm">We'll assist with the launch and provide ongoing support to ensure your continued success.</p>
-                                    </div>
+                            <!-- Node 5 -->
+                            <div class="workflow-node node-5" data-step="5">
+                                <div class="node-icon">
+                                    <i class="fas fa-rocket"></i>
                                 </div>
-                                <div class="w-2/12 flex justify-center">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
-                                        <i class="fas fa-rocket"></i>
-                                    </div>
+                                <div class="node-content">
+                                    <h4>Go Live & Support</h4>
+                                    <p>Launch assistance and ongoing support for continued success</p>
                                 </div>
-                                <div class="w-5/12"></div>
+                                <div class="node-badge">5</div>
                             </div>
                         </div>
+                        
+                        <!-- Progress indicator -->
+                        <div class="progress-indicator">
+                            <div class="progress-line"></div>
+                            <div class="progress-dot" data-step="1"></div>
+                            <div class="progress-dot" data-step="2"></div>
+                            <div class="progress-dot" data-step="3"></div>
+                            <div class="progress-dot" data-step="4"></div>
+                            <div class="progress-dot" data-step="5"></div>
+                        </div>
                     </div>
+                    
+                    <style>
+                        /* Workflow Styling */
+                        .workflow-container {
+                            position: relative;
+                            padding: 2rem 0;
+                            margin: 0 auto;
+                        }
+                        
+                        .workflow-path {
+                            position: relative;
+                            height: 600px;
+                            width: 100%;
+                        }
+                        
+                        .path-line {
+                            position: absolute;
+                            top: 0;
+                            left: 50%;
+                            width: 4px;
+                            height: 100%;
+                            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+                            transform: translateX(-50%);
+                            z-index: 1;
+                        }
+                        
+                        .path-line-2 { left: 20%; height: 80%; top: 10%; }
+                        .path-line-3 { left: 80%; height: 60%; top: 20%; }
+                        .path-line-4 { left: 50%; height: 40%; top: 30%; width: 60%; transform: translateX(-50%); }
+                        
+                        .workflow-nodes {
+                            position: relative;
+                            z-index: 2;
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            grid-template-rows: repeat(3, 1fr);
+                            gap: 2rem;
+                            height: 600px;
+                        }
+                        
+                        .workflow-node {
+                            background: rgba(30, 41, 59, 0.8);
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            border-radius: 16px;
+                            padding: 1.5rem;
+                            position: relative;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                            backdrop-filter: blur(10px);
+                        }
+                        
+                        .workflow-node:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+                            background: rgba(30, 41, 59, 0.9);
+                        }
+                        
+                        .node-1 { grid-column: 1; grid-row: 1; margin-top: 0; }
+                        .node-2 { grid-column: 3; grid-row: 1; margin-top: 0; }
+                        .node-3 { grid-column: 1; grid-row: 2; margin-top: 2rem; }
+                        .node-4 { grid-column: 3; grid-row: 2; margin-top: 2rem; }
+                        .node-5 { 
+                            grid-column: 2; 
+                            grid-row: 3; 
+                            margin: 2rem auto 0; 
+                            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.15));
+                            border: 1px solid rgba(16, 185, 129, 0.3);
+                        }
+                        
+                        .node-icon {
+                            width: 50px;
+                            height: 50px;
+                            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+                            border-radius: 12px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 1rem;
+                            color: white;
+                            font-size: 1.25rem;
+                        }
+                        
+                        .node-2 .node-icon { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
+                        .node-3 .node-icon { background: linear-gradient(135deg, #ec4899, #f59e0b); }
+                        .node-4 .node-icon { background: linear-gradient(135deg, #f59e0b, #10b981); }
+                        .node-5 .node-icon { 
+                            background: linear-gradient(135deg, #10b981, #3b82f6);
+                            width: 60px;
+                            height: 60px;
+                            font-size: 1.5rem;
+                        }
+                        
+                        .node-content h4 {
+                            color: white;
+                            font-size: 1.1rem;
+                            font-weight: 600;
+                            margin: 0 0 0.5rem 0;
+                        }
+                        
+                        .node-content p {
+                            color: #94a3b8;
+                            font-size: 0.9rem;
+                            line-height: 1.5;
+                            margin: 0;
+                        }
+                        
+                        .node-badge {
+                            position: absolute;
+                            top: -12px;
+                            right: -12px;
+                            width: 28px;
+                            height: 28px;
+                            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: white;
+                            font-weight: 600;
+                            font-size: 0.8rem;
+                            border: 2px solid #1e293b;
+                        }
+                        
+                        .node-2 .node-badge { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
+                        .node-3 .node-badge { background: linear-gradient(135deg, #ec4899, #f59e0b); }
+                        .node-4 .node-badge { background: linear-gradient(135deg, #f59e0b, #10b981); }
+                        .node-5 .node-badge { 
+                            background: linear-gradient(135deg, #10b981, #3b82f6);
+                            width: 34px;
+                            height: 34px;
+                            font-size: 1rem;
+                            top: -17px;
+                            right: -17px;
+                        }
+                        
+                        .progress-indicator {
+                            position: relative;
+                            max-width: 600px;
+                            margin: 2rem auto 0;
+                            height: 4px;
+                            background: rgba(255, 255, 255, 0.1);
+                            border-radius: 2px;
+                        }
+                        
+                        .progress-line {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            height: 100%;
+                            width: 20%;
+                            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+                            border-radius: 2px;
+                            transition: width 0.5s ease;
+                        }
+                        
+                        .progress-dot {
+                            position: absolute;
+                            top: 50%;
+                            width: 12px;
+                            height: 12px;
+                            background: #334155;
+                            border-radius: 50%;
+                            transform: translate(-50%, -50%);
+                            border: 2px solid #1e293b;
+                            transition: all 0.3s ease;
+                        }
+                        
+                        .progress-dot.active {
+                            background: #3b82f6;
+                            transform: translate(-50%, -50%) scale(1.2);
+                            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+                        }
+                        
+                        .progress-dot[data-step="1"] { left: 0; }
+                        .progress-dot[data-step="2"] { left: 25%; }
+                        .progress-dot[data-step="3"] { left: 50%; }
+                        .progress-dot[data-step="4"] { left: 75%; }
+                        .progress-dot[data-step="5"] { left: 100%; }
+                        
+                        /* Responsive adjustments */
+                        @media (max-width: 1024px) {
+                            .workflow-nodes {
+                                grid-template-columns: 1fr 1fr;
+                                grid-template-rows: auto;
+                                height: auto;
+                                gap: 1.5rem;
+                            }
+                            
+                            .node-1, .node-2, .node-3, .node-4, .node-5 {
+                                grid-column: auto !important;
+                                grid-row: auto !important;
+                                margin: 0 !important;
+                            }
+                            
+                            .workflow-path {
+                                display: none;
+                            }
+                            
+                            .workflow-node {
+                                margin-bottom: 1.5rem;
+                            }
+                        }
+                        
+                        @media (max-width: 640px) {
+                            .workflow-nodes {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                    </style>
+                    
+                    <script>
+                        // Add interactive functionality
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const workflowNodes = document.querySelectorAll('.workflow-node');
+                            const progressLine = document.querySelector('.progress-line');
+                            const progressDots = document.querySelectorAll('.progress-dot');
+                            let currentStep = 1;
+                            
+                            // Set initial active state
+                            updateProgress(1);
+                            
+                            // Add click handlers for each node
+                            workflowNodes.forEach(node => {
+                                node.addEventListener('click', function() {
+                                    const step = parseInt(this.getAttribute('data-step'));
+                                    updateProgress(step);
+                                });
+                                
+                                // Add hover effect
+                                node.addEventListener('mouseenter', function() {
+                                    const step = parseInt(this.getAttribute('data-step'));
+                                    highlightNode(step);
+                                });
+                                
+                                node.addEventListener('mouseleave', function() {
+                                    highlightNode(currentStep);
+                                });
+                            });
+                            
+                            // Auto-advance the progress
+                            let autoProgress = setInterval(() => {
+                                currentStep = currentStep < 5 ? currentStep + 1 : 1;
+                                updateProgress(currentStep);
+                            }, 3000);
+                            
+                            // Pause auto-progress on interaction
+                            document.querySelector('.workflow-container').addEventListener('mouseenter', function() {
+                                clearInterval(autoProgress);
+                            });
+                            
+                            document.querySelector('.workflow-container').addEventListener('mouseleave', function() {
+                                autoProgress = setInterval(() => {
+                                    currentStep = currentStep < 5 ? currentStep + 1 : 1;
+                                    updateProgress(currentStep);
+                                }, 3000);
+                            });
+                            
+                            function updateProgress(step) {
+                                currentStep = step;
+                                const percentage = ((step - 1) / 4) * 100;
+                                progressLine.style.width = `${percentage}%`;
+                                
+                                // Update progress dots
+                                progressDots.forEach(dot => {
+                                    const dotStep = parseInt(dot.getAttribute('data-step'));
+                                    if (dotStep <= step) {
+                                        dot.classList.add('active');
+                                    } else {
+                                        dot.classList.remove('active');
+                                    }
+                                });
+                                
+                                // Highlight current node
+                                highlightNode(step);
+                            }
+                            
+                            function highlightNode(step) {
+                                workflowNodes.forEach(node => {
+                                    const nodeStep = parseInt(node.getAttribute('data-step'));
+                                    if (nodeStep === step) {
+                                        node.style.transform = 'translateY(-8px)';
+                                        node.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.2)';
+                                        node.style.background = 'rgba(30, 41, 59, 0.95)';
+                                    } else {
+                                        node.style.transform = '';
+                                        node.style.boxShadow = '';
+                                        node.style.background = 'rgba(30, 41, 59, 0.8)';
+                                    }
+                                    
+                                    // Special styling for the final node
+                                    if (nodeStep === 5) {
+                                        if (step === 5) {
+                                            node.style.transform = 'scale(1.05)';
+                                            node.style.boxShadow = '0 20px 40px rgba(16, 185, 129, 0.2)';
+                                        } else {
+                                            node.style.transform = '';
+                                            node.style.boxShadow = '';
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    </script>
                 </div>
             </div>
             
