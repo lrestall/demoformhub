@@ -48,6 +48,7 @@
             width: 100%;
             min-height: 100vh;
             background: #0f172a !important;
+            background-image: none !important;
             color: #e2e8f0 !important;
         }
         
@@ -1550,10 +1551,6 @@
                     <p class="text-lg text-gray-300 max-w-4xl">Your success is our priority from day one with personalized onboarding and expert guidance.</p>
                 </div>
                 
-                <div class="screenshot-container" style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);">
-                    <img src="dedicatedonboardingsupport.png" alt="LeadsPedia Onboarding Process" style="width: 100%; height: auto; display: block; max-height: 500px; object-fit: contain;" onerror="this.onerror=null; this.src='onboarding.jpg'">
-                </div>
-                
                 <section class="feature-section">
                     <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
                         <div class="feature-card" style="background: rgba(26, 86, 166, 0.15); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease;">
@@ -1582,50 +1579,94 @@
                     </div>
                 </section>
                 
-                <div class="mt-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-white/5">
-                    <div class="max-w-3xl mx-auto">
-                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Your Path to Success</h3>
-                        <p class="text-gray-300 text-center mb-8">We're with you every step of the way, from initial setup to full optimization of your lead management system.</p>
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-white mb-8 text-center">Your Path to Success</h3>
+                    <p class="text-gray-300 text-center mb-10 max-w-2xl mx-auto">We're with you every step of the way, from initial setup to full optimization of your lead management system.</p>
+                    
+                    <div class="relative max-w-5xl mx-auto">
+                        <!-- Connecting line -->
+                        <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 transform -translate-x-1/2 z-0"></div>
                         
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
-                                    <i class="fas fa-calendar-check text-blue-400"></i>
+                        <!-- Timeline items -->
+                        <div class="relative z-10 space-y-16">
+                            <!-- Step 1 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12 text-right pr-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">01. Discovery & Planning</h4>
+                                        <p class="text-gray-300 text-sm">We'll start with a comprehensive discovery session to understand your business goals, requirements, and technical environment.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Kickoff & Discovery</h4>
-                                    <p class="text-gray-400 text-sm mt-1">We'll start with a comprehensive discovery session to understand your business goals and requirements.</p>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12"></div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12"></div>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12 text-left pl-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">02. System Configuration</h4>
+                                        <p class="text-gray-300 text-sm">Our experts will customize and configure the platform to match your specific business processes and requirements.</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
-                                    <i class="fas fa-cogs text-purple-400"></i>
+                            <!-- Step 3 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12 text-right pr-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">03. Integration & Testing</h4>
+                                        <p class="text-gray-300 text-sm">We'll integrate with your existing systems and conduct thorough testing to ensure everything works seamlessly.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Custom Configuration</h4>
-                                    <p class="text-gray-400 text-sm mt-1">Our team will configure the platform according to your specific needs and integrate with your existing systems.</p>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-yellow-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-plug"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12"></div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12"></div>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-green-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12 text-left pl-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">04. Training & Handover</h4>
+                                        <p class="text-gray-300 text-sm">Your team will receive comprehensive training and documentation to ensure a smooth transition.</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
-                                    <i class="fas fa-graduation-cap text-blue-400"></i>
+                            <!-- Step 5 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12 text-right pr-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">05. Go Live & Support</h4>
+                                        <p class="text-gray-300 text-sm">We'll assist with the launch and provide ongoing support to ensure your continued success.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Training & Handover</h4>
-                                    <p class="text-gray-400 text-sm mt-1">We'll train your team and provide comprehensive documentation to ensure you're fully equipped for success.</p>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
-                                    <i class="fas fa-headset text-purple-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Ongoing Support</h4>
-                                    <p class="text-gray-400 text-sm mt-1">Our support team is always available to help you get the most out of the platform.</p>
-                                </div>
+                                <div class="w-5/12"></div>
                             </div>
                         </div>
                     </div>
@@ -1762,40 +1803,94 @@
                     </div>
                 </section>
 
-                <div class="mt-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-white/5">
-                    <div class="max-w-3xl mx-auto">
-                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Complete Integration Platform</h3>
-                        <p class="text-gray-300 text-center mb-8">Connect LeadsPedia with your entire tech stack using our flexible integration options and developer-friendly tools.</p>
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-white mb-8 text-center">Your Integration Journey</h3>
+                    <p class="text-gray-300 text-center mb-10 max-w-2xl mx-auto">A seamless integration process that connects LeadsPedia with your existing tech stack in just a few steps.</p>
+                    
+                    <div class="relative max-w-5xl mx-auto">
+                        <!-- Connecting line -->
+                        <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 transform -translate-x-1/2 z-0"></div>
                         
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
-                                    <i class="fas fa-code text-blue-400"></i>
+                        <!-- Timeline items -->
+                        <div class="relative z-10 space-y-16">
+                            <!-- Step 1 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12 text-right pr-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">01. API Connection</h4>
+                                        <p class="text-gray-300 text-sm">Connect to our RESTful API with comprehensive documentation and SDKs for all major programming languages.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Developer-Friendly API</h4>
-                                    <p class="text-gray-400 text-sm mt-1">RESTful API with clear documentation, SDKs, and sample code for all major programming languages.</p>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-plug"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12"></div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12"></div>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12 text-left pl-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">02. Data Synchronization</h4>
+                                        <p class="text-gray-300 text-sm">Set up real-time data flow between LeadsPedia and your existing systems with our bidirectional sync.</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
-                                    <i class="fas fa-exchange-alt text-purple-400"></i>
+                            <!-- Step 3 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12 text-right pr-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">03. Security Setup</h4>
+                                        <p class="text-gray-300 text-sm">Configure enterprise-grade security with OAuth 2.0, IP whitelisting, and role-based access controls.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Seamless Data Flow</h4>
-                                    <p class="text-gray-400 text-sm mt-1">Bidirectional data synchronization ensures all your systems stay up to date in real-time.</p>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-yellow-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12"></div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12"></div>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-green-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-tasks"></i>
+                                    </div>
+                                </div>
+                                <div class="w-5/12 text-left pl-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">04. Workflow Configuration</h4>
+                                        <p class="text-gray-300 text-sm">Customize automation rules and workflows to match your unique business processes.</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mr-4 mt-0.5">
-                                    <i class="fas fa-shield-alt text-blue-400"></i>
+                            <!-- Step 5 -->
+                            <div class="relative flex items-center justify-between">
+                                <div class="w-5/12 text-right pr-10">
+                                    <div class="inline-block bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700">
+                                        <h4 class="text-lg font-semibold text-white mb-2">05. Go Live & Monitor</h4>
+                                        <p class="text-gray-300 text-sm">Launch your integration and monitor performance with real-time analytics and alerts.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-medium">Enterprise Security</h4>
-                                    <p class="text-gray-400 text-sm mt-1">Robust security features including OAuth 2.0, IP whitelisting, and role-based access controls.</p>
+                                <div class="w-2/12 flex justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white/10">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
                                 </div>
+                                <div class="w-5/12"></div>
                             </div>
                         </div>
                     </div>
