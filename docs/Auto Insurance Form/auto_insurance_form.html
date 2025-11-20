@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Insurance | Demo Form Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/space-theme.css">
+    <style>
+        /* Space Theme Overrides for Insurance Form */
+        :root {
+            --space-blue: #3b82f6;
+            --space-indigo: #6366f1;
+            --space-purple: #8b5cf6;
+            --space-yellow: #f59e0b;
+            --space-green: #10b981;
+            --space-white: #f8fafc;
+            --space-gray: #1e293b;
+            --space-dark: #0f172a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: var(--space-white);
+            border-radius: 50%;
+            animation: twinkle var(--twinkle-duration) infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--space-white);
+            background: linear-gradient(135deg, var(--space-dark), var(--space-gray));
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-header {
+            background: linear-gradient(90deg, var(--space-purple), var(--space-indigo));
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Removed rotating gradient animation from header */
+        
+        .form-header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-body {
+            padding: 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--space-white);
+            font-size: 0.95rem;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--space-white);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--space-purple);
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Style for select dropdown arrow */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f8fafc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, 
+                var(--space-purple), 
+                var(--space-indigo)
+            );
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            will-change: transform, box-shadow, background;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                var(--space-indigo), 
+                var(--space-blue),
+                var(--space-purple)
+            );
+            background-size: 200% 100%;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .btn:active {
+            transform: translateY(1px) scale(0.99);
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+            transition: all 0.1s ease;
+        }
+        
+        /* Add a subtle pulse effect on hover */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+        
+        .btn:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0.7rem;
+            animation: pulse 1.5s infinite;
+            z-index: -1;
+        }
+        
+        /* Custom checkbox and radio styles */
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .checkbox-group input,
+        .radio-group input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        /* Custom checkbox */
+        .checkbox-group .checkmark {
+            position: absolute;
+            left: 0;
+            height: 1.25rem;
+            width: 1.25rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--space-purple);
+            border-radius: 0.25rem;
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox-group:hover .checkmark {
+            background-color: rgba(139, 92, 246, 0.2);
+        }
+        
+        .checkbox-group input:checked ~ .checkmark {
+            background-color: var(--space-purple);
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .checkbox-group input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .checkbox-group .checkmark:after {
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        /* Custom radio button */
+        .radio-group .checkmark {
+            position: absolute;
+            left: 0;
+            height: 1.25rem;
+            width: 1.25rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--space-indigo);
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        .radio-group:hover .checkmark {
+            background-color: rgba(99, 102, 241, 0.2);
+        }
+        
+        .radio-group input:checked ~ .checkmark {
+            background-color: var(--space-indigo);
+        }
+        
+        .radio-group .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .radio-group input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .radio-group .checkmark:after {
+            top: 4px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        /* Label styles */
+        .checkbox-group label,
+        .radio-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 0.95rem;
+            color: var(--space-white);
+            cursor: pointer;
+        }
+        
+        /* Form section styling */
+        h2 {
+            color: var(--space-white);
+            margin: 3rem 0 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--space-purple), var(--space-indigo));
+            border-radius: 3px;
+        }
+        
+        h2 i {
+            color: var(--space-purple);
+            font-size: 1.25em;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .form-body {
+                padding: 1.5rem 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+                margin: 2rem 0 1.25rem;
+            }
+            
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                margin: 0.5rem;
+                padding: 1rem;
+                border-radius: 0.75rem;
+            }
+            
+            .form-header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .form-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .form-header p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+                margin: 1.75rem 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-page-container">
+        <div class="form-container">
+            <form id="autoInsuranceForm" action="https://leads.leadspediatrack.com/post.do" method="GET" class="main-form">
+            <!-- Hidden Fields for LeadsPedia -->
+            <input type="hidden" name="campaign_id" value="686fc603bf1a5">
+            <input type="hidden" name="lp_campaign_id" value="686fc603bf1a5">
+            <input type="hidden" name="lp_campaign_key" value="jKNqfR3t6nzJgmdHPBk4">
+            <input type="hidden" name="lp_response" value="json">
+            <input type="hidden" name="lp_test" value="0">
+            <input type="hidden" name="ip_address" id="ip_address" value="">
+            <input type="hidden" name="sub_id" id="sub_id" value="">
+            <input type="hidden" name="lead_type" value="auto_insurance">
+            <input type="hidden" name="lp_s1" value="">
+            <input type="hidden" name="lp_s2" value="">
+            <input type="hidden" name="lp_s3" value="">
+            <input type="hidden" name="lp_s4" value="">
+            <input type="hidden" name="lp_s5" value="">
+            <input type="hidden" name="user_agent" id="user_agent">
+            <input type="hidden" name="source_url" id="source_url">
+            <input type="hidden" name="referrer" id="referrer">
+            <input type="hidden" name="services_needed" value="auto_insurance">
+            
+            <div class="form-header" style="padding: 2rem 2rem 1rem; background: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                <h1 style="margin: 0 0 0.5rem; padding: 0; color: var(--space-white); font-size: 1.75rem; font-weight: 600;">Get Your Auto Insurance Quote</h1>
+                <p style="margin: 0; color: var(--space-gray-400); font-size: 1rem;">Fill out the form below to compare rates from top providers</p>
+            </div>
+            
+            <div class="form-body" style="padding: 2.5rem 2rem 2rem;">
+                <h2 style="text-align: center; margin: 0 0 1.5rem; padding: 0.5rem 0; color: var(--space-white);">Get Your Free Auto Insurance Quote</h2>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="first_name">First Name *</label>
+                        <input type="text" id="first_name" name="first_name" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                    </div>
+                    <div class="form-col">
+                        <label for="last_name">Last Name *</label>
+                        <input type="text" id="last_name" name="last_name" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                    </div>
+                    <div class="form-col">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="zip_code">ZIP Code *</label>
+                        <input type="text" id="zip_code" name="zip_code" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                    </div>
+                    <div class="form-col">
+                        <label for="vehicle_year">Vehicle Year</label>
+                        <select id="vehicle_year" name="vehicle_year" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                            <option value="">Select Year</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="vehicle_make">Vehicle Make</label>
+                        <input type="text" id="vehicle_make" name="vehicle_make" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                    </div>
+                    <div class="form-col">
+                        <label for="vehicle_model">Vehicle Model</label>
+                        <input type="text" id="vehicle_model" name="vehicle_model" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem;">
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin: 1.5rem 0;">
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="agree_terms" name="agree_terms" required style="margin-right: 0.5rem;">
+                        <label for="agree_terms" style="font-size: 0.9rem; color: var(--space-white);">
+                            I agree to receive quotes and information about auto insurance plans via phone, email, and SMS/MMS. 
+                            Message and data rates may apply. I understand that I can opt out at any time. *
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-actions" style="text-align: center; margin-top: 2rem;">
+                    <button type="submit" style="background: var(--space-blue); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-size: 1.1rem; cursor: pointer; width: 100%; max-width: 300px; margin: 0 auto;">
+                        <i class="fas fa-shield-alt"></i> Get My Free Quote
+                    </button>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-lock"></i> Your information is secure and never shared without permission.
+                    </p>
+                </div>
+                
+                <!-- Moved Powered by section into form body -->
+                <div style="text-align: center; padding: 2rem 0 0; margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7);">Powered by</p>
+                    <div style="display: flex; justify-content: center; margin-bottom: 1rem; padding: 0 1rem;">
+                        <img src="../leadspedia-logo.png" alt="LeadsPedia" style="height: 45px; width: auto; max-width: 100%;">
+                    </div>
+                    <p style="margin: 0 0 0.5rem 0; color: rgba(255, 255, 255, 0.5); font-size: 0.85rem;">2025 Breakfast Club Publishing. All rights reserved.</p>
+                    <p style="margin: 0; font-size: 0.75rem; color: rgba(255, 255, 255, 0.4);">
+                        By submitting this form, you agree to our <a href="#" style="color: var(--space-blue); text-decoration: none;">Terms of Service</a> and 
+                        <a href="#" style="color: var(--space-blue); text-decoration: none;">Privacy Policy</a>.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Form Footer (empty and hidden) -->
+            <div class="form-footer" style="display: none;"></div>
+            </form>
+        </div>
+        
+        <!-- Sidebar removed as requested -->
+    </div>
+    
+    <style>
+        /* Body styles for starry background */
+        body {
+            background: #0a0e17;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Form page container */
+        .form-page-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 1rem 4rem; /* Further reduced top padding */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Form container */
+        .form-container {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 0.5rem auto 2rem; /* Further reduced top margin */
+        }
+            
+        /* Sidebar styles (kept for reference) */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        @media (max-width: 1023px) {
+            .form-container {
+                margin-bottom: 2rem;
+            }
+            
+            .sidebar {
+                background: rgba(15, 23, 42, 0.7);
+                border-radius: 1rem;
+                padding: 2rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                margin-top: 2rem;
+            }
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle form submission
+            const autoInsuranceForm = document.getElementById('autoInsuranceForm');
+            if (autoInsuranceForm) {
+                autoInsuranceForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Field name mapping to match LeadsPedia parameters
+                    const fieldMapping = {
+                        // Personal Information
+                        'first_name': 'firstname',
+                        'last_name': 'lastname',
+                        'email': 'email',
+                        'phone': 'phone1',
+                        'zip_code': 'zip',
+                        'vehicle_year': 'vehicleyear',
+                        'vehicle_make': 'vehiclemake',
+                        'vehicle_model': 'vehiclemodel',
+                        'agree_terms': 'consent',
+                        // System fields - keep as is
+                        'campaign_id': 'campaign_id',
+                        'lp_campaign_id': 'lp_campaign_id',
+                        'lp_campaign_key': 'lp_campaign_key',
+                        'lp_response': 'lp_response',
+                        'lp_test': 'lp_test',
+                        'ip_address': 'ip_address',
+                        'sub_id': 'sub_id',
+                        'lead_type': 'lead_type',
+                        'lp_s1': 'lp_s1',
+                        'lp_s2': 'lp_s2',
+                        'lp_s3': 'lp_s3',
+                        'lp_s4': 'lp_s4',
+                        'lp_s5': 'lp_s5',
+                        'user_agent': 'user_agent',
+                        'source_url': 'source_url',
+                        'referrer': 'referrer',
+                        'services_needed': 'services_needed'
+                    };
+                    
+                    // Show loading state
+                    const submitBtn = autoInsuranceForm.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                    
+                    try {
+                        // Get form data and map field names
+                        const formData = new FormData(autoInsuranceForm);
+                        const params = new URLSearchParams();
+                        
+                        // Add timestamp and additional tracking data
+                        params.append('submission_time', new Date().toISOString());
+                        params.append('source', 'website_form');
+                        
+                        // Process form fields with mapping
+                        formData.forEach((value, key) => {
+                            const mappedKey = fieldMapping[key] || key;
+                            if (value && mappedKey) {
+                                params.append(mappedKey, value);
+                            }
+                        });
+                        
+                        // Ensure required fields are included
+                        if (!params.has('lp_campaign_key')) {
+                            params.append('lp_campaign_key', 'auto_insurance_2025');
+                        }
+                        
+                        // Build the URL with query parameters
+                        const endpoint = 'https://leads.leadspediatrack.com/post.do';
+                        const url = `${endpoint}?${params.toString()}`;
+                        
+                        // Log form data for debugging (without sensitive fields)
+                        const logData = {};
+                        formData.forEach((value, key) => {
+                            // Don't log sensitive fields
+                            if (!key.includes('key') && !key.includes('token') && !key.includes('password')) {
+                                logData[key] = value;
+                            }
+                        });
+                        console.log('Submitting form data:', logData);
+                        
+                        // Submit using GET with URL parameters
+                        const response = await fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json'
+                            },
+                            mode: 'cors',
+                            credentials: 'omit'
+                        });
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        
+                        const result = await response.json();
+                        
+                        if (result && (result.status === 'success' || result.success)) {
+                            // Show success message
+                            alert('Thank you! Your auto insurance quote request has been submitted.');
+                            autoInsuranceForm.reset();
+                        } else {
+                            throw new Error(result.message || 'Failed to submit form');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert(`There was an error submitting your request: ${error.message}`);
+                    } finally {
+                        // Reset button state
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                    }
+                });
+            }
+            // Initialize stars background
+            createStarsBackground();
+            
+            // Get user's IP address
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip_address').value = data.ip;
+                })
+                .catch(error => {
+                    console.error('Error fetching IP address:', error);
+                });
+                
+            // Set user agent
+            document.getElementById('user_agent').value = navigator.userAgent;
+            
+            // Set referrer
+            document.getElementById('http_referer').value = document.referrer || 'direct';
+            
+            // Set current date and time
+            const now = new Date();
+            document.getElementById('submission_date').value = now.toISOString().split('T')[0];
+            document.getElementById('submission_time').value = now.toTimeString().split(' ')[0];
+            
+            // Optimized form input animations
+            const formInputs = document.querySelectorAll('input, select, textarea');
+            formInputs.forEach(input => {
+                const parent = input.parentElement;
+                parent.style.willChange = 'transform';
+                parent.style.transition = 'transform 0.2s cubic-bezier(0.2, 0, 0.2, 1)';
+                
+                input.addEventListener('focus', function() {
+                    parent.style.transform = 'translateY(-2px) translateZ(0)';
+                }, { passive: true });
+                
+                input.addEventListener('blur', function() {
+                    parent.style.transform = 'translateY(0) translateZ(0)';
+                }, { passive: true });
+            });
+            
+            // Form submission handling
+            const form = document.getElementById('autoInsuranceForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show loading state
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    
+                    // Simulate form submission (replace with actual form submission)
+                    setTimeout(() => {
+                        // Show success message
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+                        submitBtn.style.background = 'linear-gradient(90deg, var(--space-green), var(--space-teal))';
+                        
+                        // Reset form after delay
+                        setTimeout(() => {
+                            form.reset();
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.style.background = 'linear-gradient(90deg, var(--space-purple), var(--space-indigo))';
+                            
+                            // Show thank you message
+                            const formBody = document.querySelector('.form-body');
+                            if (formBody) {
+                                formBody.innerHTML = `
+                                    <div style="text-align: center; padding: 3rem 1rem;">
+                                        <div style="font-size: 4rem; color: var(--space-green); margin-bottom: 1.5rem;">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <h2 style="color: var(--space-white); font-size: 2rem; margin-bottom: 1rem;">Thank You!</h2>
+                                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; line-height: 1.6; max-width: 600px; margin: 0 auto 2rem;">
+                                            Your information has been received. One of our insurance specialists will contact you shortly with your personalized quotes.
+                                        </p>
+                                        <a href="/" class="btn" style="max-width: 200px; margin: 0 auto;">
+                                            <i class="fas fa-home"></i> Back to Home
+                                        </a>
+                                    </div>
+                                `;
+                            }
+                        }, 1500);
+                    }, 2000);
+                });
+            }
+            
+            // Create optimized stars background effect
+            function createStarsBackground() {
+                // Create container with hardware acceleration
+                const starsContainer = document.createElement('div');
+                starsContainer.className = 'stars-bg';
+                starsContainer.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    overflow: hidden;
+                    pointer-events: none;
+                    will-change: transform;
+                    transform: translateZ(0);
+                    backface-visibility: hidden;
+                    perspective: 1000px;
+                `;
+                
+                // Create a canvas for better performance with many stars
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.style.position = 'absolute';
+                canvas.style.top = '0';
+                canvas.style.left = '0';
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                
+                function resizeCanvas() {
+                    const dpr = window.devicePixelRatio || 1;
+                    canvas.width = window.innerWidth * dpr;
+                    canvas.height = window.innerHeight * dpr;
+                    ctx.scale(dpr, dpr);
+                    drawStars();
+                }
+                
+                const stars = [];
+                const starsCount = 200; // Increased number of stars for a richer effect
+                
+                function initStars() {
+                    for (let i = 0; i < starsCount; i++) {
+                        stars.push({
+                            x: Math.random() * window.innerWidth,
+                            y: Math.random() * window.innerHeight,
+                            size: Math.random() * 3 + 1, // Slightly larger stars
+                            alpha: Math.random() * 0.8 + 0.2, // Brighter stars
+                            speed: Math.random() * 0.3 + 0.2, // Slower, more subtle movement
+                        });
+                    }
+                }
+                
+                function drawStars() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    const time = Date.now() * 0.001;
+                    
+                    stars.forEach(star => {
+                        // Twinkle effect
+                        const twinkle = Math.sin(time * star.speed) * 0.5 + 0.5;
+                        const currentAlpha = star.alpha * (0.5 + twinkle * 0.5);
+                        
+                        ctx.beginPath();
+                        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha})`;
+                        ctx.fill();
+                    });
+                    
+                    requestAnimationFrame(drawStars);
+                }
+                
+                // Initialize and start animation
+                window.addEventListener('resize', resizeCanvas);
+                initStars();
+                resizeCanvas();
+                starsContainer.appendChild(canvas);
+                document.body.appendChild(starsContainer);
+                
+                // Add subtle gradient overlay
+                const gradientOverlay = document.createElement('div');
+                gradientOverlay.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: radial-gradient(ellipse at bottom, rgba(27, 39, 53, 0.6) 0%, rgba(9, 10, 15, 0.8) 100%);
+                    pointer-events: none;
+                `;
+                starsContainer.appendChild(gradientOverlay);
+            }
+            
+            // Optimized mouse move handler with throttling
+            let lastMouseX = 0;
+            let lastMouseY = 0;
+            let ticking = false;
+            const container = document.querySelector('.stars-bg');
+            
+            function updateParallax() {
+                if (!container || !container.firstChild) return;
+                
+                const x = (lastMouseX / window.innerWidth - 0.5) * 20;
+                const y = (lastMouseY / window.innerHeight - 0.5) * 20;
+                
+                container.firstChild.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+                ticking = false;
+            }
+            
+            document.addEventListener('mousemove', function(e) {
+                lastMouseX = e.clientX;
+                lastMouseY = e.clientY;
+                
+                if (!ticking) {
+                    window.requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }, { passive: true });
+        });
+    </script>
+    
+    <script>
+        // Get sub_id from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const subId = urlParams.get('sub_id') || '';
+        document.getElementById('sub_id').value = subId;
+        
+        // Form submission handler
+        document.getElementById('autoInsuranceForm').addEventListener('submit', function(e) {
+            // Add any additional form validation here
+            console.log('Form submitted');
+            // Form will submit to LeadsPedia
+        });
+    </script>
+</body>
+</html>
